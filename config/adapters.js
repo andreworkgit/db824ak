@@ -14,6 +14,7 @@
 
 module.exports.adapters = {
 
+  /*
   // If you leave the adapter config unspecified 
   // in a model definition, 'default' will be used.
   'default': 'disk',
@@ -36,4 +37,20 @@ module.exports.adapters = {
     password: 'YOUR_MYSQL_PASSWORD', 
     database: 'YOUR_MYSQL_DB'
   }
+  */
+
+  'default': 'mongo',
+
+  // sails v.0.9.0
+  mongo: {
+    module   : 'sails-mongo',
+    host     : 'localhost',
+    port     : 27017,
+    user     : '',
+    password : '',
+    database : 'sails-test'
+  }
+
+
+
 };

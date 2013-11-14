@@ -4,6 +4,7 @@
     <h1>Cadastro usuário <small>Enter Your Data</small></h1>
     <ol class="breadcrumb">
       <li><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li><a href="/user"><i class="fa fa-table"></i> List User</a></li>
       <li class="active"><i class="fa fa-edit"></i> Forms</li>
     </ol>
     <% if(flash && flash.err) { %>
@@ -47,7 +48,7 @@
 
       <div class="form-group">
         <label>Password</label>
-        <input class="form-control" name="password">
+        <input class="form-control" name="password" id="password">
         <p class="help-block">Example block-level help text here.</p>
       </div>
 
