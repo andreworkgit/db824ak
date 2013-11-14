@@ -1,0 +1,18 @@
+<div id="page-wrapper">
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Show usuário <small>Enter Your Data</small></h1>
+    <ol class="breadcrumb">
+      <li><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li class="active"><i class="fa fa-edit"></i> Forms</li>
+    </ol>
+  </div>
+</div>
+
+<h1><%- user.name %></h1>
+<h3><%- user.title %></h3>
+<hr>
+<h3><%- user.email %></h3>
+
+<a href="/user/edit/<%- user.id %>">Edit</a>
+</div>

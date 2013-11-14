@@ -1,0 +1,40 @@
+<div id="page-wrapper">
+<div class="row">
+  <div class="col-lg-12">
+    <h1>List usuário <small>Enter Your Data</small></h1>
+    <ol class="breadcrumb">
+      <li><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+      <li class="active"><i class="fa fa-edit"></i> Forms</li>
+    </ol>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover tablesorter">
+    <thead>
+      <tr>
+        <th>ID <i class="fa fa-sort"></i></th>
+        <th>Nome <i class="fa fa-sort"></i></th>
+        <th>Title <i class="fa fa-sort"></i></th>
+        <th>Email <i class="fa fa-sort"></i></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    	<% _.each(users,function(user) { %>
+      <tr data-id="<%- user.id %>">
+        <td><%- user.id %></td>
+        <td><%- user.name %></td>
+        <td><%- user.title %></td>
+        <td><%- user.email %></td>
+
+        <td><a href="/user/show/<%- user.id %>">Show</a></td>
+        <td><a href="/user/edit/<%- user.id %>">Edit</a></td>
+        <td><a href="/user/destroy/<%- user.id %>">Delete</a></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
