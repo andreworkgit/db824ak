@@ -44,11 +44,14 @@ module.exports.adapters = {
   // sails v.0.9.0
   mongo: {
     module   : 'sails-mongo',
-    host     : 'localhost',
+    /*host     : 'localhost',
     port     : 27017,
     user     : '',
     password : '',
-    database : 'sails-test'
+    database : 'sails-test'*/
+    url: process.env.DB_URL,
+    //url : "mongodb://admin:admin@paulo.mongohq.com:10068/dobanks",
+    schema: true
   }
 
 
