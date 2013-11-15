@@ -16,8 +16,15 @@ module.exports.policies = {
 
   // Default policy for all controllers and actions
   // (`true` allows public access) 
-  '*': true
-
+  '*': 'flash',
+  user:{
+  	'new':'flash',
+  	'create':'flash',
+  	'show':'userCanSeeProfile',
+  	'edit':'userCanSeeProfile',
+  	'update':'userCanSeeProfile',
+  	'*': 'isAdmin',
+  }
   /*
 	// Here's an example of adding some policies to a controller
 	RabbitController: {

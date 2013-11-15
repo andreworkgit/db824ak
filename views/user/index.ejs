@@ -18,6 +18,7 @@
         <th>Nome <i class="fa fa-sort"></i></th>
         <th>Title <i class="fa fa-sort"></i></th>
         <th>Email <i class="fa fa-sort"></i></th>
+        <th>IsAdmin <i class="fa fa-sort"></i></th>
         <th></th>
         <th></th>
         <th></th>
@@ -30,7 +31,7 @@
         <td><%- user.name %></td>
         <td><%- user.title %></td>
         <td><%- user.email %></td>
-
+        <td><%- user.admin %></td>
         <td><a href="/user/show/<%- user.id %>">Show</a></td>
         <td><a href="/user/edit/<%- user.id %>">Edit</a></td>
         
