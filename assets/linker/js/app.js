@@ -72,15 +72,25 @@ function cometMessageReceivedFromServer(message){
 
 function updateUserInDom(userId, message){
 
-  var page - document.location.pathname;
+  var page = document.location.pathname;
 
-  page = page.replace(/(\/))$/,'');
+  page = page.replace(/(\/)$/, '');
 
   switch(page){
     case '/user':
       if(message.verb === 'update'){
         UserIndexPage.updateUser(userId,message);
       }
+
+      if(message.verb === 'create'){
+        UserIndexPage.addUser(message);
+      }
+
+      if(message.verb === 'destroy'){
+        UserIndexPage.destroyUser(userId);
+      }
+
+
     break;
   }
 
@@ -90,15 +100,36 @@ function updateUserInDom(userId, message){
 var UserIndexPage = {
 
   updateUser: function(id,message){
-    var $userRow = $('tr[data-id"'+id+'" td span').first();
+    var $userRow = $('tr[data-id="'+id+'"] td span').first();
       
     if(message.data.loggedIn){
-      $userRow.html('true');
+      $userRow.html('online');
     }else{
-      $userRow.html('false');
-
+      $userRow.html('offline');
     }
 
 
   },
+
+
+  addUser: function(user){
+    
+    var obj = {
+      user:user.data,
+      _csrf: window.overlord.csrf || ''
+    };
+
+      
+    $('tr:last').after(
+      JST['assets/linker/templates/addUser.ejs'](obj)
+    );
+
+
+  },
+
+  destroyUser : function(id){
+    $('tr[data-id="'+id+'"]').remove();
+  }
+
+
 };

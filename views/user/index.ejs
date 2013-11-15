@@ -28,7 +28,14 @@
     <tbody>
     	<% _.each(users,function(user) { %>
       <tr data-id="<%- user.id %>" data-model="user">
-        <td><span><%- user.online %></span></td>
+        <td><span>
+              <% if(user.online) { %>
+                online
+              <% }else{ %>
+                offline
+              <% } %>
+            </span>
+        </td>
         <td><%- user.id %></td>
         <td><%- user.name %></td>
         <td><%- user.title %></td>
