@@ -113,15 +113,14 @@ var UserIndexPage = {
 
 
   addUser: function(user){
-    
+   
     var obj = {
       user:user.data,
       _csrf: window.overlord.csrf || ''
-    };
+    }; 
 
-      
     $('tr:last').after(
-      JST['assets/linker/templates/addUser.ejs'](obj)
+      JST['assets/linker/templates/addUser.ejs']( obj )
     );
 
 
