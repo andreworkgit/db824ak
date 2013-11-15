@@ -68,7 +68,9 @@ module.exports = {
 
             User.publishUpdate(user.id,{
               loggedIn: true,
-              id: user.id
+              id: user.id,
+              name: user.name,
+              action: ' has logged in'
             });
 
 		       if(req.session.User.admin){
@@ -94,24 +96,30 @@ module.exports = {
   	User.findOne(req.session.User.id,function foundUser(err,user){
 
   		var userId = req.session.User.id;
+      if(user){
+    		User.update(userId,{
+    			online:false
+    		},function(err){
+    			if(err) return next(err);
 
-  		User.update(userId,{
-  			online:false
-  		},function(err){
-  			if(err) return next(err);
+          User.publishUpdate(user.id,{
+            loggedIn: false,
+            id: user.id,
+            name: user.name,
+            action: ' has logged out'
+          });
 
-        User.publishUpdate(user.id,{
-          loggedIn: false,
-          id: user.id
-        });
+    			req.session.destroy();
+    			res.redirect("/session/new");
+    		});
 
-  			req.session.destroy();
-  			res.redirect("/session/new");
-  		});
-
-  	});
-
-  }
+    	
+    }else{
+      req.session.destroy();
+      res.redirect("/session/new"); 
+    }
+  });
+}
   
 
 };

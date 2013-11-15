@@ -46,6 +46,7 @@ module.exports = {
       user.save(function(err,user){
         if(err) return next(err);
 
+        user.action = " signed-up and logged-in";
         User.publishCreate(user);
 
         res.redirect('/user/show/'+user.id);
@@ -130,17 +131,19 @@ module.exports = {
   },
 
   'destroy' : function(req,res,next){
+    
     User.findOne(req.param('id'),function foundUser(err,user){
 
       if(err) return next(err);
-      
-
       if(!user) return next('User does \'t exist.');
 
       User.destroy(req.param('id'), function userDestroyed(err){
          if(err) return next(err);
 
-         User.publishDestroy(user.id);
+         User.publishDestroy(user.id, {
+          name: user.name,
+          action: 'has been destroyed'
+         });
       });
 
       res.redirect('/user');
