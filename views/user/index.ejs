@@ -14,6 +14,7 @@
   <table class="table table-hover tablesorter">
     <thead>
       <tr>
+        <th>On</th>
         <th>ID <i class="fa fa-sort"></i></th>
         <th>Nome <i class="fa fa-sort"></i></th>
         <th>Title <i class="fa fa-sort"></i></th>
@@ -26,7 +27,8 @@
     </thead>
     <tbody>
     	<% _.each(users,function(user) { %>
-      <tr data-id="<%- user.id %>">
+      <tr data-id="<%- user.id %>" data-model="user">
+        <td><span><%- user.online %></span></td>
         <td><%- user.id %></td>
         <td><%- user.name %></td>
         <td><%- user.title %></td>

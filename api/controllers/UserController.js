@@ -30,7 +30,7 @@ module.exports = {
   	User.create(userObj,function userCreated(err,user){
 
   		if(err) {//return next(err);
-  			console.log(err);
+//  			console.log(err);
   			req.session.flash = {
   				err : err
   			}
@@ -42,7 +42,13 @@ module.exports = {
       req.session.authenticated = true;
       req.session.User = user;
 
-      res.redirect('/user/show/'+user.id);
+      user.online = true;
+      user.save(function(err,user){
+        if(err) return next(err);
+
+        res.redirect('/user/show/'+user.id);
+      
+      });
       //return res.redirect('/user');
   		//res.json(user);
   		
@@ -65,8 +71,8 @@ module.exports = {
 
   'index' : function(req,res,next){
 
-    console.log(new Date());
-    console.log(req.session.authenticated);
+//    console.log(new Date());
+//    console.log(req.session.authenticated);
 
   	User.find(function foundUsers(err,users){
 
@@ -137,5 +143,19 @@ module.exports = {
       
     });
   },
+
+  'subscribe' : function(req,res){
+    User.find(function foundUsers(err,users){
+
+      if(err) return next(err);
+
+      User.subscribe(req.socket);
+    
+      User.subscribe(req.socket,users);
+
+      res.send(200);
+    })
+    
+  }
 
 };

@@ -38,7 +38,12 @@ module.exports = {
 
   	encryptedPassword:{
   		type:'string'
-  	}
+  	},
+
+    online:{
+      type:'boolean',
+      defaultsTo:false
+    },    
 
   	/*toJson: function(){
   		var obj = this.toObject();
@@ -53,7 +58,7 @@ module.exports = {
   },
 
   beforeValidation: function(values,next){
-    console.log(values);
+//    console.log(values);
     if(typeof values.admin !== 'undefined'){
       if(values.admin === 'unchecked'){
         values.admin = false;
