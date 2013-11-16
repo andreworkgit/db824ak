@@ -1,254 +1,483 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!--
-        For demonstration purposes, the `title` is dynamically set here based on
-        your `sails.config.appName` to show that you can inject data into layouts
-        exactly the same way as with your other view templates.
-    -->
-    <title><%- title %></title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="/linker/styles/bootstrap.css" rel="stylesheet">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>DoBanks</title>
+    <meta name="author" content="Andre" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="application-name" content="dobanks" />
 
-    <!-- Add custom CSS here -->
-    <link href="/linker/styles/sb-admin.css" rel="stylesheet">
-    <link rel="stylesheet" href="/linker/font-awesome/css/font-awesome.min.css">
-    <!-- Page Specific CSS -->
-    <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Force IE9 to render in normal mode -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
+    <!-- Le styles -->
+    <!-- Use new way for google web fonts 
+    http://www.smashingmagazine.com/2012/07/11/avoiding-faux-weights-styles-google-web-fonts -->
+    <!-- Headings -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' />
+    <!-- Text -->
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css' /> 
+    <!--[if lt IE 9]>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Droid+Sans:400" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Droid+Sans:700" rel="stylesheet" type="text/css" />
+    <![endif]-->
 
+    <!-- Core stylesheets do not remove -->
+    <link id="bootstrap" href="/linker/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/linker/css/bootstrap-theme.css" rel="stylesheet" type="text/css" />
+    <link href="/linker/css/jquery.ui.supr.css" rel="stylesheet" type="text/css"/>
+    <link href="/linker/css/icons.css" rel="stylesheet" type="text/css" />
 
-    <script type="text/javascript">
-    window.overlord = {csrf: "<%- _csrf %>"};
-    </script>
+    <!-- Plugins stylesheets -->
+    <link href="/linker/css/jquery.qtip.css" rel="stylesheet" type="text/css" />
+    <link href="/linker/css/fullcalendar.css" rel="stylesheet" type="text/css" />
+    <link href="/linker/css/tipuesearch.css" type="text/css" rel="stylesheet" />
 
-    <!-- Viewport mobile tag for sensible mobile support -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="/linker/css/uniform.default.css" type="text/css" rel="stylesheet" />
 
-    <!--
+    <!-- Main stylesheets -->
+    <link href="/linker/css/main.css" rel="stylesheet" type="text/css" /> 
 
-      Stylesheets
-      ========================
+    <!-- Custom stylesheets ( Put your own changes here ) -->
+    <link href="/linker/css/custom.css" rel="stylesheet" type="text/css" /> 
 
-      You can link any CSS, LESS, or image files in your `assets` directory
-      as you would normally: using <link/> tags.
+    <!--[if IE 8]><link href="admin_files/ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
+    
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script type="text/javascript" src="admin_files/excanvas.min.js"></script>
+      <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <script type="text/javascript" src="admin_files/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/apple-touch-icon-144-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/apple-touch-icon-114-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/apple-touch-icon-72-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-57-precomposed.png" />
+    
+    <!-- Windows8 touch icon ( http://www.buildmypinnedsite.com/ )-->
+    <meta name="application-name" content="Supr"/> 
+    <meta name="msapplication-TileColor" content="#3399cc"/> 
+
+    <!-- Load modernizr first -->
+    <script type="text/javascript" src="/linker/js/modernizr.js"></script>
+
+    </head>
       
-    -->
+    <body>
+    <!-- loading animation -->
+    <div id="qLoverlay"></div>
+    <div id="qLbar"></div>
+        
+    <div id="header">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="dashboard.html">Supr.<span class="slogan">admin</span></a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon16 icomoon-icon-arrow-4"></span>
+                </button>
+            </div> 
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="dashboard.html"><span class="icon16 icomoon-icon-screen-2"></span> <span class="txt">Dashboard</span></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="icon16 icomoon-icon-cog"></span><span class="txt"> Settings</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="menu">
+                                <ul>
+                                    <li><a href="#"><span class="icon16 icomoon-icon-equalizer"></span>Site config</a></li>
+                                    <li><a href="#"><span class="icon16 icomoon-icon-wrench"></span>Plugins</a></li>
+                                    <li><a href="#"><span class="icon16 icomoon-icon-image-2"></span>Themes</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="icon16 icomoon-icon-envelop"></span><span class="txt">Messages</span><span class="notification">8</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="menu">
+                                <ul class="messages">    
+                                    <li class="header"><strong>Messages</strong> (10) emails and (2) PM</li>
+                                    <li>
+                                       <span class="icon"><span class="icon16 icomoon-icon-user-plus"></span></span>
+                                        <span class="name"><a data-toggle="modal" href="#myModal1"><strong>Sammy Morerira</strong></a><span class="time">35 min ago</span></span>
+                                        <span class="msg">I have question about new function ...</span>
+                                    </li>
+                                    <li>
+                                       <span class="icon avatar"><img src="/linker/images/avatar.jpg" alt="" /></span>
+                                        <span class="name"><a data-toggle="modal" href="#myModal1"><strong>George Michael</strong></a><span class="time">1 hour ago</span></span>
+                                        <span class="msg">I need to meet you urgent please call me ...</span>
+                                    </li>
+                                    <li>
+                                        <span class="icon"><span class="icon16 icomoon-icon-envelop"></span></span>
+                                        <span class="name"><a data-toggle="modal" href="#myModal1"><strong>Ivanovich</strong></a><span class="time">1 day ago</span></span>
+                                        <span class="msg">I send you my suggestion, please look and ...</span>
+                                    </li>
+                                    <li class="view-all"><a href="#">View all messages <span class="icon16 icomoon-icon-arrow-right-8"></span></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+              
+                <ul class="nav navbar-right usernav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="icon16 icomoon-icon-bell"></span><span class="notification">3</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="menu">
+                                <ul class="notif">
+                                    <li class="header"><strong>Notifications</strong> (3) items</li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="icon"><span class="icon16 icomoon-icon-user-plus"></span></span>
+                                            <span class="event">1 User is registred</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="icon"><span class="icon16 icomoon-icon-bubble-3"></span></span>
+                                            <span class="event">Jony add 1 comment</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="icon"><span class="icon16 icomoon-icon-new"></span></span>
+                                            <span class="event">admin Julia added post with a long description</span>
+                                        </a>
+                                    </li>
+                                    <li class="view-all"><a href="#">View all notifications <span class="icon16 icomoon-icon-arrow-right-8"></span></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle avatar" data-toggle="dropdown">
+                            <img src="/linker/images/avatar.jpg" alt="" class="image" /> 
+                            <span class="txt"><span class="__cf_email__" data-cfemail="157471787c7b55666065673b767a78">[email&nbsp;protected]</span><script type="text/javascript">
+/* <![CDATA[ */
+(function(){try{var s,a,i,j,r,c,l,b=document.getElementsByTagName("script");l=b[b.length-1].previousSibling;a=l.getAttribute('data-cfemail');if(a){s='';r=parseInt(a.substr(0,2),16);for(j=2;a.length-j;j+=2){c=parseInt(a.substr(j,2),16)^r;s+=String.fromCharCode(c);}s=document.createTextNode(s);l.parentNode.replaceChild(s,l);}}catch(e){}})();
+/* ]]> */
+</script></span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="menu">
+                                <ul>
+                                    <li><a href="#"><span class="icon16 icomoon-icon-user-plus"></span>Edit profile</a></li>
+                                    <li><a href="#"><span class="icon16 icomoon-icon-bubble-2"></span>Approve comments</a></li>
+                                    <li><a href="#"><span class="icon16 icomoon-icon-plus"></span>Add user</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html"><span class="icon16 icomoon-icon-exit"></span><span class="txt"> Logout</span></a></li>
+                </ul>
+            </div><!-- /.nav-collapse -->
+        </nav><!-- /navbar --> 
 
-    <!--
+    </div><!-- End #header -->
 
-      Support for LESS included by default
-      ================================================
-
-      LESS files are automatically compiled when they change using the Gruntfile
-      located in the top-level of this Sails app.  If you run into issues with styles
-      not reloading, check the Sails log output in your console for LESS compilation errors.
-      If necessary, shut down and then lift your app again.
-      
-    -->
-
-  </head>
-
-  <body>
     <div id="wrapper">
 
-      <!-- Sidebar -->
-      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html">SB Admin</a>
+        <!--Responsive navigation button-->  
+        <div class="resBtn">
+            <a href="#"><span class="icon16 minia-icon-list-3"></span></a>
+        </div>
+        
+        <!--Left Sidebar collapse button-->  
+        <div class="collapseBtn leftbar">
+             <a href="#" class="tipR" title="Hide Left Sidebar"><span class="icon12 minia-icon-layout"></span></a>
         </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-          <ul class="nav navbar-nav side-nav">
-            <li class="active"><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li><a href="charts.html"><i class="fa fa-bar-chart-o"></i> Charts</a></li>
-            <li><a href="tables.html"><i class="fa fa-table"></i> Tables</a></li>
-            <li><a href="forms.html"><i class="fa fa-edit"></i> Forms</a></li>
-            <li><a href="typography.html"><i class="fa fa-font"></i> Typography</a></li>
-            <li><a href="bootstrap-elements.html"><i class="fa fa-desktop"></i> Bootstrap Elements</a></li>
-            <li><a href="bootstrap-grid.html"><i class="fa fa-wrench"></i> Bootstrap Grid</a></li>
-            <li><a href="blank-page.html"><i class="fa fa-file"></i> Blank Page</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Dropdown Item</a></li>
-                <li><a href="#">Another Item</a></li>
-                <li><a href="#">Third Item</a></li>
-                <li><a href="#">Last Item</a></li>
-              </ul>
-            </li>
-          </ul>
+        <!--Sidebar background-->
+        <div id="sidebarbg"></div>
+        <!--Sidebar content-->
+        <div id="sidebar">
 
-          <ul class="nav navbar-nav navbar-right navbar-user">
-            <li class="dropdown messages-dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Messages <span class="badge">7</span> <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li class="dropdown-header">7 New Messages</li>
-                <li class="message-preview">
-                  <a href="#">
-                    <span class="avatar"><img src="http://placehold.it/50x50"></span>
-                    <span class="name">John Smith:</span>
-                    <span class="message">Hey there, I wanted to ask you something...</span>
-                    <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
-                  </a>
-                </li>
-                <li class="divider"></li>
-                <li class="message-preview">
-                  <a href="#">
-                    <span class="avatar"><img src="http://placehold.it/50x50"></span>
-                    <span class="name">John Smith:</span>
-                    <span class="message">Hey there, I wanted to ask you something...</span>
-                    <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
-                  </a>
-                </li>
-                <li class="divider"></li>
-                <li class="message-preview">
-                  <a href="#">
-                    <span class="avatar"><img src="http://placehold.it/50x50"></span>
-                    <span class="name">John Smith:</span>
-                    <span class="message">Hey there, I wanted to ask you something...</span>
-                    <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
-                  </a>
-                </li>
-                <li class="divider"></li>
-                <li><a href="#">View Inbox <span class="badge">7</span></a></li>
-              </ul>
-            </li>
-            <li class="dropdown alerts-dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> Alerts <span class="badge">3</span> <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Default <span class="label label-default">Default</span></a></li>
-                <li><a href="#">Primary <span class="label label-primary">Primary</span></a></li>
-                <li><a href="#">Success <span class="label label-success">Success</span></a></li>
-                <li><a href="#">Info <span class="label label-info">Info</span></a></li>
-                <li><a href="#">Warning <span class="label label-warning">Warning</span></a></li>
-                <li><a href="#">Danger <span class="label label-danger">Danger</span></a></li>
-                <li class="divider"></li>
-                <li><a href="#">View All</a></li>
-              </ul>
-            </li>
-            <li class="dropdown user-dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-                <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
-                <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
-                <li class="divider"></li>
-                <% if(session.authenticated) { %>
-                <li><a href="/session/destroy"><i class="fa fa-power-off"></i> Log Out</a></li>
-                <% } %>
-              </ul>
-            </li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </nav>
-    <!-- Include the view file for the current controller/route -->
-    <%- body %>
+            <div class="shortcuts">
+                <ul>
+                    <li><a href="support.html" title="Support section" class="tip"><span class="icon24 icomoon-icon-support"></span></a></li>
+                    <li><a href="#" title="Database backup" class="tip"><span class="icon24 icomoon-icon-database"></span></a></li>
+                    <li><a href="charts.html" title="Sales statistics" class="tip"><span class="icon24 icomoon-icon-pie-2"></span></a></li>
+                    <li><a href="#" title="Write post" class="tip"><span class="icon24 icomoon-icon-pencil"></span></a></li>
+                </ul>
+            </div><!-- End search -->            
 
-    </div><!-- /#wrapper -->
+            <div class="sidenav">
 
+                <div class="sidebar-widget" style="margin: -1px 0 0 0;">
+                    <h5 class="title" style="margin-bottom:0">Navigation</h5>
+                </div><!-- End .sidenav-widget -->
 
-    <!--TEMPLATES-->
-    <script type="text/javascript" src="/jst.js"></script>
-    <!--TEMPLATES END-->
+                <div class="mainnav">
+                    <ul>
+                        <li><a href="charts.html"><span class="icon16 icomoon-icon-stats-up"></span>Charts</a></li>
+                        <li>
+                            <a href="#"><span class="icon16 icomoon-icon-list"></span>Forms<span class="notification red">sub2</span></a>
+                            <ul class="sub">
+                                <li><a href="forms.html"><span class="icon16 icomoon-icon-file"></span>Forms Stuff</a></li>
+                                <li><a href="forms-validation.html"><span class="icon16 icomoon-icon-file"></span>Validation</a></li>
+                                <li>
+                                    <a href="#"><span class="icon16 icomoon-icon-file"></span>Sub Level 2<span class="notification red">new</span></a>
+                                     <ul class="sub">
+                                        <li><a href="#"><span class="icon16 icomoon-icon-arrow-right-3"></span>Item</a></li>
+                                        <li><a href="#"><span class="icon16 icomoon-icon-arrow-right-3"></span>Item</a></li>
+                                        <li><a href="#"><span class="icon16 icomoon-icon-arrow-right-3"></span>Item</a></li>
+                                        <li><a href="#"><span class="icon16 icomoon-icon-arrow-right-3"></span>Item</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="icon16 icomoon-icon-table-2"></span>Tables</a>
+                            <ul class="sub">
+                                <li><a href="tables.html"><span class="icon16 icomoon-icon-arrow-right-3"></span>Static</a></li>
+                                <li><a href="data-table.html"><span class="icon16 icomoon-icon-arrow-right-3"></span>Data table</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="icon16 icomoon-icon-equalizer-2"></span>UI Elements</a>
+                            <ul class="sub">
+                                <li><a href="icons.html"><span class="icon16 icomoon-icon-rocket"></span>Icons</a></li>
+                                <li><a href="buttons.html"><span class="icon16 icomoon-icon-file"></span>Buttons</a></li>
+                                <li><a href="elements.html"><span class="icon16 icomoon-icon-cogs"></span>Elements</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="typo.html"><span class="icon16 icomoon-icon-font"></span>Typography</a></li>
+                        <li><a href="grid.html"><span class="icon16 icomoon-icon-grid"></span>Grid</a></li>
+                        <li><a href="calendar.html"><span class="icon16 icomoon-icon-calendar"></span>Calendar</a></li>
+                        <li>
+                            <a href="widgets.html"><span class="icon16 icomoon-icon-cube"></span>Widgets<span class="notification green">35</span></a>
+                        </li>
+                        <li><a href="file.html"><span class="icon16 icomoon-icon-upload"></span>File Manager</a></li>
+                        <li>
+                            <a href="#"><span class="icon16 icomoon-icon-file"></span>Error pages<span class="notification">6</span></a>
+                            <ul class="sub">
+                                <li><a href="403.html"><span class="icon16 icomoon-icon-file"></span>Error 403</a></li>
+                                <li><a href="404.html"><span class="icon16 icomoon-icon-file"></span>Error 404</a></li>
+                                <li><a href="405.html"><span class="icon16 icomoon-icon-file"></span>Error 405</a></li>
+                                <li><a href="500.html"><span class="icon16 icomoon-icon-file"></span>Error 500</a></li>
+                                <li><a href="503.html"><span class="icon16 icomoon-icon-file"></span>Error 503</a></li>
+                                <li><a href="offline.html"><span class="icon16 icomoon-icon-file"></span>Offline page</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><span class="icon16 icomoon-icon-folder"></span>Other pages<span class="notification blue">11</span></a>
+                            <ul class="sub">
+                                <li><a href="invoice.html"><span class="icon16 icomoon-icon-file"></span>Invoice page</a></li>
+                                <li><a href="profile.html"><span class="icon16 icomoon-icon-file"></span>User profile</a></li>
+                                <li><a href="search.html"><span class="icon16 icomoon-icon-search-3"></span>Search page</a></li>
+                                <li><a href="email.html"><span class="icon16 icomoon-icon-envelop"></span>Email page</a></li>
+                                <li><a href="support.html"><span class="icon16  icomoon-icon-support"></span>Support page</a></li>
+                                <li><a href="faq.html"><span class="icon16 icomoon-icon-attachment"></span>FAQ page</a></li>
+                                <li><a href="structure.html"><span class="icon16 icomoon-icon-file"></span>Blank page</a></li>
+                                <li><a href="fixed-topbar.html"><span class="icon16 icomoon-icon-file"></span>Fixed topbar</a></li>
+                                <li><a href="right-sidebar.html"><span class="icon16 icomoon-icon-file"></span>Right sidebar</a></li>
+                                <li><a href="two-sidebars.html"><span class="icon16 icomoon-icon-file"></span>Two sidebars</a></li>
+                                <li><a href="drag.html"><span class="icon16 icomoon-icon-move"></span>Drag &amp; Drop <span class="notification red">new</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div> <!-- End sidenav -->
+
+            <div class="sidebar-widget">
+                <h5 class="title">Monthly Bandwidth Transfer</h5>
+                <div class="content">
+                    <span class="icon16 icomoon-icon-loop left"></span>
+                    <div class="progress progress-mini left tip" title="87%">
+                      <div class="progress-bar progress-bar-danger" style="width: 87%;"></div>
+                    </div>
+                    <span class="percent">87%</span>
+                    <div class="stat">19419.94 / 12000 MB</div>
+                </div>
+
+            </div><!-- End .sidenav-widget -->
+
+            <div class="sidebar-widget">
+                <h5 class="title">Disk Space Usage</h5>
+                <div class="content">
+                    <span class="icon16  icomoon-icon-storage-2 left"></span>
+                    <div class="progress progress-mini left tip" title="16%">
+                      <div class="progress-bar progress-bar-success" style="width: 16%;"></div>
+                    </div>
+                    <span class="percent">16%</span>
+                    <div class="stat">304.44 / 8000 MB</div>
+                </div>
+
+            </div><!-- End .sidenav-widget -->
+
+            <div class="sidebar-widget">
+                <h5 class="title">Ad sense stats</h5>
+                <div class="content">
+                    
+                    <div class="stats">
+                        <div class="item">
+                            <div class="head clearfix">
+                                <div class="txt">Advert View</div>
+                            </div>
+                            <span class="icon16 icomoon-icon-eye left"></span>
+                            <div class="number">21,501</div>
+                            <div class="change">
+                                <span class="icon24 icomoon-icon-arrow-up-2 green"></span>
+                                5%
+                            </div>
+                            <span id="stat1" class="spark"></span>
+                        </div>
+                        <div class="item">
+                            <div class="head clearfix">
+                                <div class="txt">Clicks</div>
+                            </div>
+                            <span class="icon16 icomoon-icon-thumbs-up left"></span>
+                            <div class="number">308</div>
+                            <div class="change">
+                                <span class="icon24 icomoon-icon-arrow-down-2 red"></span>
+                                8%
+                            </div>
+                            <span id="stat2" class="spark"></span>
+                        </div>
+                        <div class="item">
+                            <div class="head clearfix">
+                                <div class="txt">Page CTR</div>
+                            </div>
+                            <span class="icon16 icomoon-icon-heart left"></span>
+                            <div class="number">4%</div>
+                            <div class="change">
+                                <span class="icon24 icomoon-icon-arrow-down-2 red"></span>
+                                1%
+                            </div>
+                            <span id="stat3" class="spark"></span>
+                        </div>
+                        <div class="item">
+                            <div class="head clearfix">
+                                <div class="txt">Earn money</div>
+                            </div>
+                            <span class="icon16 icomoon-icon-coin left"></span>
+                            <div class="number">$376</div>
+                            <div class="change">
+                                <span class="icon24 icomoon-icon-arrow-up-2 green"></span>
+                                26%
+                            </div>
+                            <span id="stat4" class="spark"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div><!-- End .sidenav-widget -->
+
+            <div class="sidebar-widget">
+                <h5 class="title">Right now</h5>
+                <div class="content">
+                    <div class="rightnow">
+                        <ul class="list-unstyled">
+                            <li><span class="number">34</span><span class="icon16 icomoon-icon-new"></span>Posts</li>
+                            <li><span class="number">7</span><span class="icon16 icomoon-icon-file"></span>Pages</li>
+                            <li><span class="number">14</span><span class="icon16 icomoon-icon-list-2"></span>Categories</li>
+                            <li><span class="number">201</span><span class="icon16 icomoon-icon-tag"></span>Tags</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div><!-- End .sidenav-widget -->
+
+        </div><!-- End #sidebar -->
+
+        <!--Body content-->
+        <div id="content" class="clearfix">
+            <div class="contentwrapper"><!--Content wrapper-->
+
+<!-- End .heading-->
+
+                <!-- Build page from here: -->
+                <div class="row">
+                     <div class="col-lg-4">
+                     </div>
+                    <div class="col-lg-4">
+                        <div class="panel panel-default">
+
+                                <div class="panel-heading">
+                                    <h4>
+                                        <span class="icon16  icomoon-icon-gun"></span>
+                                        <span>Comece a Roubar</span>
+                                    </h4>
+        
+                                </div>
+                                <div class="panel-body">
+                                    <p><button type="button" class="btn btn-primary"><i class="icon16  icomoon-icon-facebook-3 white"></i>Conectar com Facebook</button></p>
+                                    <p><button type="button" class="btn btn-info"><i class="icon16   icomoon-icon-google white"></i>Conectar com Google &nbsp&nbsp</button></p>
+                                </div>
+
+                            </div>
+                    </div><!-- End .span8 -->
+
+                    <div class="col-lg-4">
+                     </div>
+
+                    <!-- End .span4 -->
+
+                </div><!-- End .row -->
+
+                
+            </div><!-- End contentwrapper -->
+        </div><!-- End #content -->
     
-    <!--
+    </div><!-- End #wrapper -->
+    
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Important plugins put in all pages -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="/linker/js/bootstrap.js"></script>  
+    <script type="text/javascript" src="/linker/js/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="/linker/js/jRespond.min.js"></script>
 
-      Client-side Javascript
-      ========================
+    <!-- Charts plugins -->
+    <script type="text/javascript" src="/linker/js/jquery.flot.js"></script>
+    <script type="text/javascript" src="/linker/js/jquery.flot.grow.js"></script>
+    <script type="text/javascript" src="/linker/js/jquery.flot.pie.js"></script>
+    <script type="text/javascript" src="/linker/js/jquery.flot.resize.js"></script>
+    <script type="text/javascript" src="/linker/js/jquery.flot.tooltip_0.4.4.js"></script>
+    <script type="text/javascript" src="/linker/js/jquery.flot.orderBars.js"></script>
+    <script type="text/javascript" src="/linker/js/jquery.sparkline.min.js"></script><!-- Sparkline plugin -->
+    <script type="text/javascript" src="/linker/js/jquery.knob.js"></script><!-- Circular sliders and stats -->
 
-      You can import any js files in your `assets` directory as you would 
-      normally: using <script></script> tags.
+    <!-- Misc plugins -->
+    <script type="text/javascript" src="/linker/js/fullcalendar.min.js"></script><!-- Calendar plugin -->
+    <script type="text/javascript" src="/linker/js/jquery.qtip.min.js"></script><!-- Custom tooltip plugin -->
+    <script type="text/javascript" src="/linker/js/jquery.ui.totop.min.js"></script> <!-- Back to top plugin -->
+    
+    <!-- Search plugin -->
+    <script type="text/javascript" src="/linker/js/tipuesearch_set.js"></script>
+    <script type="text/javascript" src="/linker/js/tipuesearch_data.js"></script><!-- JSON for searched results -->
+    <script type="text/javascript" src="/linker/js/tipuesearch.js"></script>
 
-      Here's an example of importing a few dependencies, in order:
-    -->
-    <!-- Bring in the socket.io client -->
-    <script type="text/javascript" src="/linker/js/socket.io.js"></script>
-    <!-- then beef it up with some convenience logic for talking to Sails.js -->
-    <script type="text/javascript" src="/linker/js/sails.io.js"></script>
-    <script src="/linker/js/jquery.min.js"></script>
-    <script src="/linker/js/jquery.validate.min.js"></script>
-    <script src="/linker/js/custom.validate.js"></script>
-    <!-- listen on socket.io for incoming messages -->
-    <script type="text/javascript" src="/linker/js/app.js"></script>
-    <script src="/linker/js/custom.validate.js"></script>
-    <script src="/linker/js/underscore.js"></script>
-    <script src="/linker/js/bootstrap.js"></script>
-    <!-- Page Specific Plugins -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-   <!-- <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
-    <script src="/linker/js/morris/chart-data-morris.js"></script>-->
-    <script src="/linker/js/tablesorter/jquery.tablesorter.js"></script>
-    <script src="/linker/js/tablesorter/tables.js"></script>
-
-
-
-<!--
-    <script src="/linker/js/socket.io.js"></script>
-    <script src="/linker/js/sails.io.js"></script>
-    <script src="/linker/js/app.js"></script>
-    <script src="/linker/js/bootstrap.js"></script>
-    <script src="/linker/js/flot/chart-data-flot.js"></script>
-    <script src="/linker/js/flot/excanvas.min.js"></script>
-    <script src="/linker/js/flot/jquery.flot.js"></script>
-    <script src="/linker/js/flot/jquery.flot.pie.js"></script>
-    <script src="/linker/js/flot/jquery.flot.resize.js"></script>
-    <script src="/linker/js/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="/linker/js/jquery.js"></script>
-    <script src="/linker/js/jquery.min.js"></script>
-    <script src="/linker/js/jquery.validate.min.js"></script>
-    <script src="/linker/js/morris/chart-data-morris.js"></script>
-    <script src="/linker/js/tablesorter/jquery.tablesorter.js"></script>
-    <script src="/linker/js/tablesorter/tables.js"></script>
-    <script src="/linker/js/underscore.js"></script>
--->
-
-    <!-- Your scripts here? -->
-    <!-- Your scripts here? -->
-    <!-- Your scripts here? -->
-
-
-    <!--
-
-      Looking for client-side CoffeeScript or TypeScript?
-      ================================================
-
-      CoffeeScript and TypeScript precompilation are not installed by default,
-      but if you'd like to mix those features in, it is straightforward to
-      `npm install` the relevant grunt community modules and modify your Gruntfile
-      to use them.
-
-    -->
-
-
-
-    <!--
-
-      Another way: The Asset Linker
-      ========================
-
-      Sails supports a Grunt-based asset linker, to automatically inject 
-      <link> and <script> tags, as well any client-side templates you're using
-      into your HTML layouts and views, respecting dependencies.
-
-      You created this Sails app with the asset linker disabled.
-      If you change your mind, check out the docs on the subject:
-      http://sailsjs.org/#!documentation/asset-management
-
-    -->
+    <!-- Form plugins -->
+    <script type="text/javascript" src="/linker/js/jquery.uniform.min.js"></script>
+    
+    <!-- Init plugins -->
+    <script type="text/javascript" src="/linker/js/main.js"></script><!-- Core js functions -->
+    <script type="text/javascript" src="/linker/js/dashboard.js"></script><!-- Init plugins only for page -->
 
     </body>
 </html>
