@@ -5,34 +5,48 @@ var passport = require('passport')
 
 var verifyHandler = function (token, tokenSecret, profile, done) {
     process.nextTick(function () {
-        console.dir(profile);
-        return done(null, profile);
-        /*User.findOne({uid: profile.id}).done(function (err, user) {
+        //console.dir(profile);
+
+      /*  User.findOrCreate({ uid:  profile.id,
+        					name: profile.displayName,
+        					email:profile.emails.value}).done(function (err, user) {
+        						console.log("user creado ou found");
+        						console.dir(user);
+        						return done(err, user);
+        					});*/
+
+        User.findOne({uid: profile.id, provider: profile.provider},function (err, user) {
             if (user) {
                 return done(null, user);
             } else {
+            	var name = "User"+ Math.floor(Math.random() * 11111);
+
+            	if(profile.displayName != "") name = profile.displayName; 
+
                 User.create({
                     provider: profile.provider,
                     uid: profile.id,
-                    name: profile.displayName
-                }).done(function (err, user) {
+                    name: name,
+                    email: profile._json.email,
+                    imagem: profile._json.picture
+                },function (err, user) {
                         return done(err, user);
                     });
             }
-        });*/
+        });
     });
 };
 
 passport.serializeUser(function (user, done) {
-    //done(null, user.uid);
-    done(null, user);
+    done(null, user.uid);
+    //done(null, user);
 });
 
 passport.deserializeUser(function (uid, done) {
-    /*User.findOne({uid: uid}).done(function (err, user) {
-        done(err, user)
-    });*/
-done(null, uid);
+    User.findOne({uid: uid}).done(function (err, user) {
+        done(err, user);
+    });
+	//done(null, uid);
 });
 
 

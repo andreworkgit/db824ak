@@ -1,6 +1,6 @@
 module.exports = {
 
-  'index': function (req, res,next) {
+  'index': function (req, res) {
   	/*var oldDateObj = new Date();
   	var newDateObj = new Date(oldDateObj.getTime() + 60000);
   	req.session.cookie.expires = newDateObj;
@@ -11,7 +11,9 @@ module.exports = {
   	res.locals.flash = _.clone(req.session.flash);
     res.view('session/new');
     req.session.flash = {};*/
-    res.view('dashboard/index');
+   
+    res.view({user : req.user});
+    
   },
 
 }

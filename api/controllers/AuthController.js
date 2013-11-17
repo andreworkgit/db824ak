@@ -10,8 +10,8 @@ var passport = require('passport');
 var AuthController = {
 
     index: function (req, res) {
-        //res.view();
-        res.redirect('/');
+        res.view();
+        //res.redirect('/');
     },
 
     logout: function (req, res) {
@@ -55,7 +55,6 @@ var AuthController = {
                         res.view('500');
                         return;
                     }
-
                     res.redirect('/dashboard');
                     return;
                 });
@@ -65,7 +64,7 @@ var AuthController = {
     'google/callback': function (req, res) {
         passport.authenticate('google',
             function (req, res) {
-                res.redirect('/dashboard');
+                res.redirect('/');
             })(req, res);
     }
 

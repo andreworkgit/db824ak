@@ -12,22 +12,22 @@
 /*Optional font-face icons just remove if not want it*/
 @font-face {
 	font-family: 'broccolidry';
-	src: url('fonts/broccolidry.eot');
-	src: url('fonts/broccolidry.eot?#iefix') format('eot'),
-		url('fonts/broccolidry.svg#broccolidry') format('svg'),
-		url('fonts/broccolidry.woff') format('woff'),
-		url('fonts/broccolidry.ttf') format('truetype');
+	src: url('../fonts/broccolidry.eot');
+	src: url('../fonts/broccolidry.eot?#iefix') format('eot'),
+		url('../fonts/broccolidry.svg#broccolidry') format('svg'),
+		url('../fonts/broccolidry.woff') format('woff'),
+		url('../fonts/broccolidry.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'cuticons';
-	src: url('fonts/cuticons.eot');
-	src: url('fonts/cuticons.eot?#iefix') format('eot'),
-		url('fonts/cuticons.svg#cuticons') format('svg'),
-		url('fonts/cuticons.woff') format('woff'),
-		url('fonts/cuticons.ttf') format('truetype');
+	src: url('../fonts/cuticons.eot');
+	src: url('../fonts/cuticons.eot?#iefix') format('eot'),
+		url('../fonts/cuticons.svg#cuticons') format('svg'),
+		url('../fonts/cuticons.woff') format('woff'),
+		url('../fonts/cuticons.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -100,11 +100,11 @@
 
 @font-face {
 	font-family: 'wpzoom';
-	src: url('fonts/wpzoom.eot');
-	src: url('fonts/wpzoom.eot?#iefix') format('embedded-opentype'),
-		url('fonts/wpzoom.svg#wpzoom') format('svg'),
-		url('fonts/wpzoom.woff') format('woff'),
-		url('fonts/wpzoom.ttf') format('truetype');
+	src: url('../fonts/wpzoom.eot');
+	src: url('../fonts/wpzoom.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/wpzoom.svg#wpzoom') format('svg'),
+		url('../fonts/wpzoom.woff') format('woff'),
+		url('../fonts/wpzoom.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }

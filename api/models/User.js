@@ -15,15 +15,15 @@ module.exports = {
   	nickname: 'string'
   	*/
 
+    uid:{
+      type:'string',
+      required:true
+    },
+
   	name:{
-  		type:'string',
-  		required:true
-  	},
-  	
-    title:{
   		type:'string'
   	},
-  	
+  	  	
     email:{
   		type:'string',
   		email:true,
@@ -31,19 +31,18 @@ module.exports = {
   		unique:true
   	},
 
-    admin:{
-      type:'boolean',
-      defaultsTo:false
+    imagem: {
+      type:'string',
     },
-
-  	encryptedPassword:{
-  		type:'string'
-  	},
 
     online:{
       type:'boolean',
       defaultsTo:false
-    },    
+    }, 
+
+    provider: {
+       type:'string',
+    }   
 
   	/*toJson: function(){
   		var obj = this.toObject();
@@ -57,8 +56,7 @@ module.exports = {
     
   },
 
-  beforeValidation: function(values,next){
-//    console.log(values);
+  /*beforeValidation: function(values,next){
     if(typeof values.admin !== 'undefined'){
       if(values.admin === 'unchecked'){
         values.admin = false;
@@ -82,6 +80,6 @@ module.exports = {
       next();
     })
 
-  }
+  }*/
 
 };
