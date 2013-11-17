@@ -25,6 +25,10 @@ module.exports.policies = {
   	'edit':'userCanSeeProfile',
   	'update':'userCanSeeProfile',
   	'*': 'isAdmin',
+  },
+
+  dashboard:{
+  	'*': 'authenticated'
   }
   /*
 	// Here's an example of adding some policies to a controller

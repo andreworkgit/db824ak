@@ -1,5 +1,5 @@
 {
-    "name": "myproject",
+    "name": "dobanks",
     "private": true,
     "version": "0.0.0",
     "description": "a Sails application",
@@ -10,6 +10,9 @@
         "ejs": "0.8.4",
         "optimist": "0.3.4",
         "sails-mongo": "~0.9.4",
+        "passport": "0.1.17",
+        "passport-github": "0.1.5",
+        "passport-google-oauth": "0.1.5",
         "bcrypt-nodejs": "0.0.3"
     },
     "scripts": {
