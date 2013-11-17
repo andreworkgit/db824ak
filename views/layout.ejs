@@ -36,8 +36,7 @@
 
     <!-- Plugins stylesheets -->
     <link href="/linker/css/jquery.qtip.css" rel="stylesheet" type="text/css" />
-    <link href="/linker/css/fullcalendar.css" rel="stylesheet" type="text/css" />
-    <link href="/linker/css/tipuesearch.css" type="text/css" rel="stylesheet" />
+
 
     <link href="/linker/css/uniform.default.css" type="text/css" rel="stylesheet" />
 
@@ -403,41 +402,7 @@
 
         <!--Body content-->
         <div id="content" class="clearfix">
-            <div class="contentwrapper"><!--Content wrapper-->
-
-<!-- End .heading-->
-
-                <!-- Build page from here: -->
-                <div class="row">
-                     <div class="col-lg-4">
-                     </div>
-                    <div class="col-lg-4">
-                        <div class="panel panel-default">
-
-                                <div class="panel-heading">
-                                    <h4>
-                                        <span class="icon16  icomoon-icon-gun"></span>
-                                        <span>Comece a Roubar</span>
-                                    </h4>
-        
-                                </div>
-                                <div class="panel-body">
-                                    <p><button type="button" class="btn btn-primary"><i class="icon16  icomoon-icon-facebook-3 white"></i>Conectar com Facebook</button></p>
-                                    <p><button type="button" class="btn btn-info"><i class="icon16   icomoon-icon-google white"></i>Conectar com Google &nbsp&nbsp</button></p>
-                                </div>
-
-                            </div>
-                    </div><!-- End .span8 -->
-
-                    <div class="col-lg-4">
-                     </div>
-
-                    <!-- End .span4 -->
-
-                </div><!-- End .row -->
-
-                
-            </div><!-- End contentwrapper -->
+            <%- body %><!-- End contentwrapper -->
         </div><!-- End #content -->
     
     </div><!-- End #wrapper -->
@@ -453,31 +418,17 @@
     <script type="text/javascript" src="/linker/js/jRespond.min.js"></script>
 
     <!-- Charts plugins -->
-    <script type="text/javascript" src="/linker/js/jquery.flot.js"></script>
-    <script type="text/javascript" src="/linker/js/jquery.flot.grow.js"></script>
-    <script type="text/javascript" src="/linker/js/jquery.flot.pie.js"></script>
-    <script type="text/javascript" src="/linker/js/jquery.flot.resize.js"></script>
-    <script type="text/javascript" src="/linker/js/jquery.flot.tooltip_0.4.4.js"></script>
-    <script type="text/javascript" src="/linker/js/jquery.flot.orderBars.js"></script>
-    <script type="text/javascript" src="/linker/js/jquery.sparkline.min.js"></script><!-- Sparkline plugin -->
-    <script type="text/javascript" src="/linker/js/jquery.knob.js"></script><!-- Circular sliders and stats -->
 
     <!-- Misc plugins -->
-    <script type="text/javascript" src="/linker/js/fullcalendar.min.js"></script><!-- Calendar plugin -->
     <script type="text/javascript" src="/linker/js/jquery.qtip.min.js"></script><!-- Custom tooltip plugin -->
     <script type="text/javascript" src="/linker/js/jquery.ui.totop.min.js"></script> <!-- Back to top plugin -->
     
-    <!-- Search plugin -->
-    <script type="text/javascript" src="/linker/js/tipuesearch_set.js"></script>
-    <script type="text/javascript" src="/linker/js/tipuesearch_data.js"></script><!-- JSON for searched results -->
-    <script type="text/javascript" src="/linker/js/tipuesearch.js"></script>
-
     <!-- Form plugins -->
     <script type="text/javascript" src="/linker/js/jquery.uniform.min.js"></script>
     
     <!-- Init plugins -->
     <script type="text/javascript" src="/linker/js/main.js"></script><!-- Core js functions -->
-    <script type="text/javascript" src="/linker/js/dashboard.js"></script><!-- Init plugins only for page -->
+    <!-- Init plugins only for page -->
 
     </body>
 </html>

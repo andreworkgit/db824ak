@@ -356,7 +356,7 @@ $(document).ready(function(){
 		});
 	}
 	//------------- To top plugin  -------------//
-	$().UItoTop({ easingType: 'easeOutQuart' });
+	//$().UItoTop({ easingType: 'easeOutQuart' });
 
 	//------------- Tooltips -------------//
 
