@@ -1,6 +1,32 @@
 // make console.log safe to use
 window.console||(console={log:function(){}});
 
+
+$("#select1").select2({
+	formatSelection: function(state){
+		if(!state.id) return state.text;
+		//console.dir(state);
+		$("#placeId").html('<img src="/linker/images/places/'+ state.id +'.jpg" class="img-responsive"  />'  );
+
+		return state.text;
+
+		/*$.ajax({
+		  url: "script.php",
+		  type: "POST",
+		  data: { id : menuId },
+		  dataType: "html"
+		}).done(function() {
+		    alert( "success" );
+		  })
+		  .fail(function() {
+		    alert( "error" );
+		  })
+		  .always(function() {
+		    alert( "complete" );
+		  });*/
+	}
+
+});
 //------------- Options for Supr - admin tempalte -------------//
 var supr_Options = {
 	fixedWidth: false, //activate fixed version with true
@@ -442,5 +468,9 @@ $(document).ready(function(){
 	//remove overlay and show page
 	$("#qLoverlay").fadeOut(250);
 	$("#qLbar").fadeOut(250);
+
+	/*$("#select1").select2({
+	    placeholder: "Select a State"
+	});*/
 
 });
