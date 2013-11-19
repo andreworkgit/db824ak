@@ -1,5 +1,5 @@
 # myproject
-### a Sails application DOBKS
+### DOBKS
 
 https://help.github.com/articles/generating-ssh-keys
 https://help.github.com/articles/set-up-git#password-caching
