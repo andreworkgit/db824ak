@@ -42,6 +42,11 @@ module.exports = {
 
     provider: {
        type:'string',
+    },
+
+    transportation: {
+      type: 'integer',
+      defaultsTo: 0
     }   
 
   	/*toJson: function(){

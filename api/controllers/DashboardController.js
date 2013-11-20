@@ -1,6 +1,6 @@
 module.exports = {
 
-  'index': function (req, res) {
+  'index': function (req, res,next) {
   	/*var oldDateObj = new Date();
   	var newDateObj = new Date(oldDateObj.getTime() + 60000);
   	req.session.cookie.expires = newDateObj;
@@ -12,7 +12,19 @@ module.exports = {
     res.view('session/new');
     req.session.flash = {};*/
    
-    res.view({user : req.user});
+    Place.find(function foundPlaces(err,places){
+
+      if(err) return next(err);
+
+      res.view({
+        user : req.user,
+        places:places
+      });
+    });
+
+    //res.view({user : req.user});
+
+
     
   },
 
