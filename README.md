@@ -26,3 +26,4 @@ wget -p -k -r -P C:/fileswget http://www.sug
 linux
 wget -c -r -P /mnt/projetos_vbox/ http://www.
 
+%windir%\system32\cmd.exe /K mongo.exe

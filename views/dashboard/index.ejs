@@ -94,8 +94,8 @@
                      
                       <div class="form-group">
                           
-                          <label class="col-lg-3 control-label" for="normalInput">Local do roubo</label>
-                          <div class="col-lg-9">
+                          <label class="col-lg-4 control-label" for="normalInput">Local do roubo</label>
+                          <div class="col-lg-8">
                               <select name="select" id="select1" class="nostyle form-control" placeholder="Selecione" >
                                 <option ></option>
                                 <% _.each(places,function(place) { %>
@@ -113,12 +113,8 @@
                       </div>
 
                       <div class="form-group">
-                          <label class="col-lg-3 control-label" for="normalInput">Seu Veículo</label>
-                          <div class="col-lg-1">
-                            <span class="icons">
-                              <i class="icon16 icomoon-icon-man"></i>
-                            </span>
-                          </div>
+                          <label class="col-lg-4 control-label" for="normalInput">Transporte</label>
+                          
                           <div class="col-lg-8">
                             <select name="select" id="sel_vehicle" class="nostyle form-control" placeholder="Selecione" >
                                 <option value="0" <% if(user.transportation == 0) { %>selected  <% } %> mkmperhour="5"> A pé > VM:5km/h</option>
@@ -127,8 +123,8 @@
                           </div>
                       </div>
                       <div id="tempo_estimado" class="form-group hide">
-                          <label class="col-lg-3 control-label" for="normalInput">Tempo estimado para chegar ao local</label>
-                          <div class="col-lg-9">
+                          <label class="col-lg-4 control-label" for="normalInput">Tempo estimado para chegar ao local</label>
+                          <div class="col-lg-8">
                             <div class="reminder">
                             
                             <ul>
