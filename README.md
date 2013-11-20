@@ -23,4 +23,6 @@ db.place.find().forEach(printjson)
 wget
 wget -c -r -P C:/fileswget http://www.
 wget -p -k -r -P C:/fileswget http://www.sug
+linux
+wget -c -r -P /mnt/projetos_vbox/ http://www.
 

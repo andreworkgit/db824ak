@@ -19,7 +19,7 @@
                     <span class="icon16 icomoon-icon-arrow-right-3"></span>
                 </span>
             </li>
-            <li class="active">Casa 0Km</li>
+            <li class="active">Casa 0Km <% if(user.transportation == 0) { %> a pé <% }else if(user.transportation > 0){ %> de carro <% } %></li>
         </ul>
 
     </div>          
@@ -66,7 +66,7 @@
 
                 <div class="panel-heading">
                     <h4>
-                        <span class="icon16  icomoon-icon-gun"></span>
+                        <span class="icon16   icomoon-icon-bubble-4"></span>
                         <span>Dicas</span>
                     </h4>
                     <a href="widgets.html#" class="minimize" style="display: none;">Minimize</a>
@@ -83,7 +83,7 @@
 
                 <div class="panel-heading">
                     <h4>
-                        <span class="icon16  wpzoom-mobile"></span>
+                        <span class="icon16  entypo-icon-center"></span>
                         <span>Alvo</span>
                     </h4>
 
@@ -99,9 +99,14 @@
                               <select name="select" id="select1" class="nostyle form-control" placeholder="Selecione" >
                                 <option ></option>
                                 <% _.each(places,function(place) { %>
-                                  <option value="<%- place.ref %>"><%- place.name %> > <%- place.distance %>m</option>
+                                  <option value="<%- place.ref %>" distance="<%- place.distance %>"><%- place.name %> > <%- place.distance %>m</option>
                                 <% }) %>
-                                 
+                                 <option value="4" distance="342">asas</option>
+                                <option value="5" distance="1873">asas</option>
+                                <option value="6" distance="2658">dddd</option>
+                                <option value="7" distance="12658">ffff33</option>
+                                <option value="8" distance="13658">ffff44</option>
+                                <option value="9" distance="15000">fffff555f</option>
                               </select>
                           </div>
 
@@ -109,16 +114,20 @@
 
                       <div class="form-group">
                           <label class="col-lg-3 control-label" for="normalInput">Seu Veículo</label>
-                          <div class="col-lg-9">
-                              <% if(user.transportation == 0) { %>
-                                <i class="icon16 icomoon-icon-man"></i> A pé
-                              <% }else if(user.transportation == 1){ %>
-                                <i class="icon16 icomoon-icon-man"></i> De Carro
-                              <% } %>
+                          <div class="col-lg-1">
+                            <span class="icons">
+                              <i class="icon16 icomoon-icon-man"></i>
+                            </span>
+                          </div>
+                          <div class="col-lg-8">
+                            <select name="select" id="sel_vehicle" class="nostyle form-control" placeholder="Selecione" >
+                                <option value="0" <% if(user.transportation == 0) { %>selected  <% } %> mkmperhour="5"> A pé > VM:5km/h</option>
+                                 <option value="1" <% if(user.transportation == 1) { %>selected  <% } %> mkmperhour="20"><i class="icon16 icomoon-icon-man"></i> Fusca > VM:15km/h</option>
+                              </select>
                           </div>
                       </div>
-                      <div class="form-group">
-                          <label class="col-lg-3 control-label" for="normalInput">Tempo estimado para o assalto</label>
+                      <div id="tempo_estimado" class="form-group hide">
+                          <label class="col-lg-3 control-label" for="normalInput">Tempo estimado para chegar ao local</label>
                           <div class="col-lg-9">
                             <div class="reminder">
                             
@@ -127,9 +136,9 @@
                                     <div class="icon">
                                         <span class="icon32 icomoon-icon-busy gray"></span>
                                     </div>
-                                    <span class="number">2:10</span> 
+                                    <span class="number" id="minute_total">2:10</span> 
                                     <span class="txt">Minutos</span>
-                                    <button type="submit" class="btn btn-warning"><i class="icon16 icomoon-icon-gun white"></i>Assaltar</button>
+                                    <button type="submit" class="btn btn-warning"><i class="icon16 icomoon-icon-gun white"></i>Ir e Assaltar</button>
                                 </li>
                                                   
                             </ul>
