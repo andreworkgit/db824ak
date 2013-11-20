@@ -34,11 +34,11 @@
 
 @font-face {
 	font-family: 'entypo';
-	src: url('fonts/entypo.eot');
-	src: url('fonts/entypo.eot?#iefix') format('eot'),
-		url('fonts/entypo.svg#entypo') format('svg'),
-		url('fonts/entypo.woff') format('woff'),
-		url('fonts/entypo.ttf') format('truetype');
+	src: url('../fonts/entypo.eot');
+	src: url('../fonts/entypo.eot?#iefix') format('eot'),
+		url('../fonts/entypo.svg#entypo') format('svg'),
+		url('../fonts/entypo.woff') format('woff'),
+		url('../fonts/entypo.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -56,44 +56,44 @@
 
 @font-face {
 	font-family: 'iconic';
-	src: url('fonts/iconic.eot');
-	src: url('fonts/iconic.eot?#iefix') format('eot'),
-		url('fonts/iconic.svg#iconic') format('svg'),
-		url('fonts/iconic.woff') format('woff'),
-		url('fonts/iconic.ttf') format('truetype');
+	src: url('../fonts/iconic.eot');
+	src: url('../fonts/iconic.eot?#iefix') format('eot'),
+		url('../fonts/iconic.svg#iconic') format('svg'),
+		url('../fonts/iconic.woff') format('woff'),
+		url('../fonts/iconic.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'meteocons';
-	src: url('fonts/meteocons.eot');
-	src: url('fonts/meteocons.eot?#iefix') format('eot'),
-		url('fonts/meteocons.svg#meteocons') format('svg'),
-		url('fonts/meteocons.woff') format('woff'),
-		url('fonts/meteocons.ttf') format('truetype');
+	src: url('../fonts/meteocons.eot');
+	src: url('../fonts/meteocons.eot?#iefix') format('eot'),
+		url('../fonts/meteocons.svg#meteocons') format('svg'),
+		url('../fonts/meteocons.woff') format('woff'),
+		url('../fonts/meteocons.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'silkcons';
-	src: url('fonts/silkcons.eot');
-	src: url('fonts/silkcons.eot?#iefix') format('eot'),
-		url('fonts/silkcons.svg#silkcons') format('svg'),
-		url('fonts/silkcons.woff') format('woff'),
-		url('fonts/silkcons.ttf') format('truetype');
+	src: url('../fonts/silkcons.eot');
+	src: url('../fonts/silkcons.eot?#iefix') format('eot'),
+		url('../fonts/silkcons.svg#silkcons') format('svg'),
+		url('../fonts/silkcons.woff') format('woff'),
+		url('../fonts/silkcons.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'typicons';
-	src: url('fonts/typicons.eot');
-	src: url('fonts/typicons.eot?#iefix') format('eot'),
-		url('fonts/typicons.svg#typicons') format('svg'),
-		url('fonts/typicons.woff') format('woff'),
-		url('fonts/typicons.ttf') format('truetype');
+	src: url('../fonts/typicons.eot');
+	src: url('../fonts/typicons.eot?#iefix') format('eot'),
+		url('../fonts/typicons.svg#typicons') format('svg'),
+		url('../fonts/typicons.woff') format('woff'),
+		url('../fonts/typicons.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -111,11 +111,11 @@
 
 @font-face {
 	font-family: 'ecoico';
-	src: url('fonts/ecoico.eot');
-	src: url('fonts/ecoico.eot?#iefix') format('embedded-opentype'),
-		url('fonts/ecoico.svg#ecoico') format('svg'),
-		url('fonts/ecoico.woff') format('woff'),
-		url('fonts/ecoico.ttf') format('truetype');
+	src: url('../fonts/ecoico.eot');
+	src: url('../fonts/ecoico.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/ecoico.svg#ecoico') format('svg'),
+		url('../fonts/ecoico.woff') format('woff'),
+		url('../fonts/ecoico.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
