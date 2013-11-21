@@ -14,7 +14,7 @@ $("#select1").select2({
 		var tempoInHour = convertMetroInKm/vehicle_sel;
 		var tempoInMinutes = Math.round((tempoInHour*60).toFixed(2));
 
-
+		
 		$("#minute_total").html(tempoInMinutes);
 		$("#tempo_estimado").removeClass("hide");
 		//var obj = {0:convertMetroInKm,1:tempoInHour,2:tempoInMinutes};

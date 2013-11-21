@@ -7,6 +7,9 @@ http://git-scm.com/book/pt-br/Git-Essencial-Trabalhando-com-Remotos
 http://stackoverflow.com/questions/9343189/did-you-run-git-update-server-info-error-on-a-github-repository
 http://www.suggeelson.com/themes/supr/
 
+windows resizer
+https://chrome.google.com/webstore/detail/window-resizer/kkelicaakdanhinjdeammmilcgefonfh
+
 node
 node ../../node_modules/sails/bin/sails lift
 
