@@ -33,6 +33,9 @@ db.user.update({provider:"google"},{ $push: {vehicles: { $each:  [1,2]} } },{mul
 REMOVE CAMPOS DE UM COLLECTION 
 db.user.update({provider:"google"},{ $unset : {vehicles: ""}},{multi:true});
 
+MANY TO MANY
+http://blog.markstarkman.com/blog/2011/09/15/mongodb-many-to-many-relationship-data-modeling/
+
 wget
 wget -c -r -P C:/fileswget http://www.
 wget -p -k -r -P C:/fileswget http://www.sug
