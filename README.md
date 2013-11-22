@@ -10,8 +10,8 @@ http://www.suggeelson.com/themes/supr/
 windows resizer
 https://chrome.google.com/webstore/detail/window-resizer/kkelicaakdanhinjdeammmilcgefonfh
 
-node
-node ../../node_modules/sails/bin/sails lift
+casa
+node.exe ../../node_modules/sails/bin/sails lift
 
 mongo
 start server
@@ -30,3 +30,6 @@ linux
 wget -c -r -P /mnt/projetos_vbox/ http://www.
 
 %windir%\system32\cmd.exe /K mongo.exe
+
+note temp:
+remove user all

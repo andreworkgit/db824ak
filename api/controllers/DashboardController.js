@@ -16,10 +16,17 @@ module.exports = {
 
       if(err) return next(err);
 
-      res.view({
-        user : req.user,
-        places:places
+      Vehicle.find(function foundVehicles(err,vehicles){
+
+        if(err) return next(err);
+        
+        res.view({
+          user : req.user,
+          places:places,
+          vehicles: vehicles
+        });
       });
+
     });
 
     //res.view({user : req.user});

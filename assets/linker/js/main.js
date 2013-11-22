@@ -1,22 +1,24 @@
 // make console.log safe to use
 window.console||(console={log:function(){}});
 
+var distance_sel =0;
+var vehicle_sel = 0;
 
 $("#select1").select2({
 	formatSelection: function(state){
 		if(!state.id) return state.text;
 		
-		var distance_sel = $("#select1 option[value="+state.id+"]").attr("distance");
-		var vehicle_sel = $("#sel_vehicle option[selected]").attr("mkmperhour");
+		distance_sel = $("#select1 option[value="+state.id+"]").attr("distance");
+		if(!vehicle_sel)
+			vehicle_sel = $("#sel_vehicle option[selected]").attr("mkmperhour");
 
+		//console.log(vehicle_sel);
 		
-		var convertMetroInKm = (distance_sel/1000).toFixed(2);
-		var tempoInHour = convertMetroInKm/vehicle_sel;
-		var tempoInMinutes = Math.round((tempoInHour*60).toFixed(2));
+		var tempoInMinutes = calculeTimeForMinutes(distance_sel,vehicle_sel);
 
-		
 		$("#minute_total").html(tempoInMinutes);
 		$("#tempo_estimado").removeClass("hide");
+
 		//var obj = {0:convertMetroInKm,1:tempoInHour,2:tempoInMinutes};
 		//console.dir(obj);
 		//$("#placeId").html('<img src="/linker/images/places/'+ state.id +'.jpg" class="img-responsive"  />'  );
@@ -26,7 +28,37 @@ $("#select1").select2({
 
 });
 
-$("#sel_vehicle").select2();
+
+function calculeTimeForMinutes(distance_sel,vehicle_sel){
+	var convertMetroInKm = (distance_sel/1000).toFixed(2);
+	var tempoInHour = convertMetroInKm/vehicle_sel;
+	return Math.round((tempoInHour*60).toFixed(2));
+}
+
+$("#sel_vehicle").select2({
+	formatSelection: function(state){
+		if(!state.id) return state.text;
+		
+		if(!distance_sel)
+			distance_sel = $("#select1 option[selected]").attr("distance");
+		vehicle_sel = $("#sel_vehicle option[value="+state.id+"]").attr("mkmperhour");
+
+		//console.log(vehicle_sel);
+		
+		var tempoInMinutes = calculeTimeForMinutes(distance_sel,vehicle_sel);
+
+		if(distance_sel>0){
+			$("#minute_total").html(tempoInMinutes);
+			$("#tempo_estimado").removeClass("hide");
+		}
+		//var obj = {0:convertMetroInKm,1:tempoInHour,2:tempoInMinutes};
+		//console.dir(obj);
+		//$("#placeId").html('<img src="/linker/images/places/'+ state.id +'.jpg" class="img-responsive"  />'  );
+
+		return state.text;
+	}
+}
+);
 //------------- Options for Supr - admin tempalte -------------//
 var supr_Options = {
 	fixedWidth: false, //activate fixed version with true

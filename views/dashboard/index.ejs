@@ -94,6 +94,7 @@
                       <ul id="myTab" class="nav nav-tabs pattern">
                           <li class="active"><a href="#home" data-toggle="tab">Dados</a></li>
                           <li class=""><a href="#profile" data-toggle="tab">Meus veículos</a></li>
+                          <li class=""><a href="#profile" data-toggle="tab">Meus bancos</a></li>
                           <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lojas <b class="caret"></b></a>
                               <ul class="dropdown-menu">
@@ -120,6 +121,15 @@
                               <div class="col-lg-6">
                                 <h3 class="">Maios Bank</h3>
                                 <span class="help-block blue">Dono(a) User87544</span>
+                              </div>
+                          </div>
+
+                          <div class="row">
+                              <label class="col-lg-6 control-label" for="normalInput"><i class="icon8  icomoon-icon-tag-5 red"></i>Tarifa bancária</label>
+                              
+                              <div class="col-lg-6">
+                                <h4 class="red">$ 44/mês</h4>
+                                
                               </div>
                           </div>
 
@@ -168,9 +178,10 @@
                           
                           <div class="col-lg-8">
                             <select name="select" id="sel_vehicle" class="nostyle form-control" placeholder="Selecione" >
-                                <option value="0" <% if(user.transportation == 0) { %>selected  <% } %> mkmperhour="5"> A pé > VM:5km/h</option>
-                                 <option value="1" <% if(user.transportation == 1) { %>selected  <% } %> mkmperhour="20"><i class="icon16 icomoon-icon-man"></i> Fusca > VM:15km/h</option>
-                              </select>
+                              <% _.each(vehicles,function(vehicle) { %>
+                                <option value="<%- vehicle.ref %>" mkmperhour="<%- vehicle.mkmperhour %>" <% if(user.transportation == vehicle.ref) { %> selected  <% } %>><%- vehicle.name %> > <%- vehicle.mkmperhour %>km/h</option>
+                              <% }) %>  
+                            </select>
                           </div>
                       </div>
                       <div id="tempo_estimado" class="form-group hide">

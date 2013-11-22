@@ -46,7 +46,7 @@ module.exports = {
 
     transportation: {
       type: 'integer',
-      defaultsTo: 0
+      defaultsTo: 1
     }   
 
   	/*toJson: function(){
