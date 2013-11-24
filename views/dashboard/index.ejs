@@ -26,39 +26,7 @@
     <!-- Build page from here: -->
     <div class="row">
          
-        <div class="col-lg-4">
-            <div class="panel panel-default">
-
-                <div class="panel-heading">
-                    <h4>
-                        <span class="icon16  icomoon-icon-gun"></span>
-                        <span>Objetivo</span>
-                    </h4>
-                    <a href="widgets.html#" class="minimize" style="display: none;">Minimize</a>
-                </div>
-                <div class="panel-body">
-                    <p>O objetivo principal do doBanks é ganhar dinheiro e administrar seus bancos, investindo em segurança para cada vez mais conquistar novos clientes. </p>
-
-                    <p><strong>Ganhar Dinheiro</strong></p>
-
-                    <p>Ao Inciar o jogo, sua conta bancária e sua carteira vai estar zerada. Os primeiros passos para ganhar dinheiro é assaltar pequenos comércios como bancas de jornais, padarias, docerias entre outros. Ao começar ganhar dinheiro você comprar assessórios na loja de equipamentos para desbloquear os sistemas
-                    de segurança dos comércios.</p>
-
-                    <p><strong>Administre seus Bancos</strong></p>
-
-                    <p>Cada jogador ao completar um assalto, recebe um determinado nível de alerta para polícia. Se a polícia pegar você com dinheiro na carteira, perderá tudo. Logo é recomendo abrir uma conta em algum banco e depositar seu dinheiro.</p>
-
-                    <p>Todos os Bancos são propriedade de cada jogador, logo você também poderá comprar :-). Cada banco cobrar um tarifa de 0,5 ao mês do valor total para administrar o dinheiro dos seus clientes.</p>
-
-                    <p><strong>Investindo em segurança para conquistar novos clientes</strong></p>
-
-                    <p>No banco que você tem conta, seu dinheiro poderá ser roubado, caso alguma gang ou assaltante quebre todo sistema de segurança. Logo para os donos dos bancos ganharem mais dinheiro e clientes, eles precisam investir cada vez mais em sistemas de segurança, para garantir que não seja roubados.</p>
-
-
-                </div>
-
-            </div>
-        </div><!-- End .span8 -->
+        <%- partial('partials/objetivo') %>
 
         <div class="col-lg-4">
 
@@ -111,7 +79,7 @@
                               <label class="col-lg-6 control-label" for="normalInput"><i class="icon8 icomoon-icon-coin green"></i>Meu dinheiro </label>
                               
                               <div class="col-lg-6">
-                                <h2 class="green">$376982</h2>
+                                <h2 class="green">$<%- user.money %></h2>
                               </div>
                           </div>
 
@@ -179,11 +147,19 @@
                           <div class="col-lg-8">
                             <select name="select" id="sel_vehicle" class="nostyle form-control" placeholder="Selecione" >
                               <% _.each(vehicles,function(vehicle) { %>
-                                <option value="<%- vehicle.ref %>" mkmperhour="<%- vehicle.mkmperhour %>" <% if(user.transportation == vehicle.ref) { %> selected  <% } %>><%- vehicle.name %> > <%- vehicle.mkmperhour %>km/h</option>
+                                <option value="<%- vehicle.ref %>" mkmperhour="<%- vehicle.mkmperhour %>" vlalu="<%- vehicle.vlalu %>" <% if(user.transportation == vehicle.ref) { %> selected  <% } %>><%- vehicle.name %> > <%- vehicle.mkmperhour %>km/h > $<%- vehicle.vlalu %> </option>
                               <% }) %>  
                             </select>
                           </div>
                       </div>
+                      <div class="form-group">
+                              <label class="col-lg-4 control-label" for="normalInput"><i class="icon8  icomoon-icon-tag-5 red"></i>Tarifa</label>
+                              
+                              <div class="col-lg-8">
+                                <h4 class="red" id="tarifa_alu">$ 0</h4>
+                                
+                              </div>
+                          </div>
                       <div id="tempo_estimado" class="form-group hide">
                           <label class="col-lg-4 control-label" for="normalInput">Tempo estimado para chegar ao local</label>
                           <div class="col-lg-8">

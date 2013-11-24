@@ -1,6 +1,10 @@
 // make console.log safe to use
 window.console||(console={log:function(){}});
 
+var email_full = "apeed@gmail.com";
+
+console.dir(email_full.split("@"));
+
 var distance_sel =0;
 var vehicle_sel = 0;
 
@@ -47,7 +51,11 @@ $("#sel_vehicle").select2({
 		
 		var tempoInMinutes = calculeTimeForMinutes(distance_sel,vehicle_sel);
 
+		var tarifa_alu = $("#sel_vehicle option[value="+state.id+"]").attr("vlalu");
+		$("#tarifa_alu").html('$ '+tarifa_alu);
+
 		if(distance_sel>0){
+			
 			$("#minute_total").html(tempoInMinutes);
 			$("#tempo_estimado").removeClass("hide");
 		}

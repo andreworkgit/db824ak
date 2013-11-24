@@ -21,14 +21,16 @@ var verifyHandler = function (token, tokenSecret, profile, done) {
             } else {
             	var name = "User"+ Math.floor(Math.random() * 11111);
 
-            	if(profile.displayName != "") name = profile.displayName; 
-
+            	if(profile.displayName != "") name = profile.displayName;
+                var shortId = require('shortid'); 
+                var url = shortId.generate();
                 User.create({
                     provider: profile.provider,
                     uid: profile.id,
                     name: name,
                     email: profile._json.email,
-                    imagem: profile._json.picture
+                    imagem: profile._json.picture,
+                    url: url
                 },function (err, user) {
                         return done(err, user);
                     });

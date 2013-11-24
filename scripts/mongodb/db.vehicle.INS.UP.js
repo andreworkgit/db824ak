@@ -54,7 +54,8 @@ db.vehicle.findAndModify( {
     	$set: {	
 				ref: '2',
 				name: 'Bicicleta BMX',
-				mkmperhour: '8'
+				mkmperhour: '7',
+				vlalu: '60'
 			}
     },
     upsert: true,
@@ -62,12 +63,13 @@ db.vehicle.findAndModify( {
 } );
 
 db.vehicle.findAndModify( {
-    query: {ref: '3',},
+    query: {ref: '3'},
     update: { 
     	$set: {	
-	ref: '3',
-	name: 'Mountain Bike',
-	mkmperhour: '11'
+				ref: '3',
+				name: 'Mountain Bike',
+				mkmperhour: '9',
+				vlalu: '120'
 			}
     },
     upsert: true,
@@ -78,9 +80,10 @@ db.vehicle.findAndModify( {
     query: {ref: '4'},
     update: { 
     	$set: {	
-	ref: '4',
-	name: 'Ferdin GT10',
-	mkmperhour: '14'
+				ref: '4',
+				name: 'Ferdin GT10',
+				mkmperhour: '11',
+				vlalu: '220'
 			}
     },
     upsert: true,
@@ -91,9 +94,10 @@ db.vehicle.findAndModify( {
     query: {ref: '5'},
     update: { 
     	$set: {	
-	ref: '5',
-	name: 'Bugan GS3',
-	mkmperhour: '14'
+				ref: '5',
+				name: 'Bugan GS3',
+				mkmperhour: '13',
+				vlalu: '440'
 			}
     },
     upsert: true,
@@ -104,9 +108,10 @@ db.vehicle.findAndModify( {
     query: {ref: '6'},
     update: { 
     	$set: {	
-	ref: '6',
-	name: 'Risco LP5',
-	mkmperhour: '14'
+				ref: '6',
+				name: 'Risco LP5',
+				mkmperhour: '13',
+				vlalu: '440'
 			}
     },
     upsert: true,

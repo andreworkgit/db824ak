@@ -10,6 +10,9 @@ http://www.suggeelson.com/themes/supr/
 windows resizer
 https://chrome.google.com/webstore/detail/window-resizer/kkelicaakdanhinjdeammmilcgefonfh
 
+GEra short url
+https://github.com/dylang/shortid
+
 casa
 node.exe ../../node_modules/sails/bin/sails lift
 
@@ -19,7 +22,7 @@ mongod --dbpath C:/mongodb/data/db
 
 write script in mongo
 mongo 127.0.0.1/sails-dobanks C:/nodejs/node_modules/sails/bin/projetos/dobanks/scripts/mongodb
-mongo 127.0.0.1/sails-dobanks C:/nodejs/projetos/dobanks/scripts/mongodb/place_updateAndInsert.js
+mongo 127.0.0.1/sails-dobanks C:/nodejs/projetos/dobanks/scripts/mongodb/db.vehicle.INS.UP.js
 
 db.place.find().forEach(printjson)
 

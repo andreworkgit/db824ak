@@ -35,6 +35,10 @@ module.exports = {
       type:'string',
     },
 
+    url: {
+      type:'string',
+    },
+
     online:{
       type:'boolean',
       defaultsTo:false
@@ -47,7 +51,12 @@ module.exports = {
     transportation: {
       type: 'integer',
       defaultsTo: 1
-    }   
+    },
+
+    money: {
+      type: 'integer',
+      defaultsTo: 0
+    }  
 
   	/*toJson: function(){
   		var obj = this.toObject();

@@ -35,4 +35,11 @@ module.exports = {
     
   },
 
+  'whatbank' : function(req,res,next) {
+
+    res.view({user : req.user});
+
+
+  }
+
 }
