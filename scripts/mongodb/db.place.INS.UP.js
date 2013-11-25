@@ -7,7 +7,8 @@ db.place.findAndModify( {
 		    	ref: '1',
 				name: 'Padaria',
 				picture:'padaria',
-				distance: '200'
+				distance: '200',
+				isbank:false
 			}
     },
     upsert: true,
@@ -21,7 +22,8 @@ db.place.findAndModify( {
 				ref: '2',
 				name: 'Banca de Jornal',	
 				picture:'banca-de-jornal',
-				distance: '240'
+				distance: '240',
+				isbank: false
 			}
     },
     upsert: true,
@@ -36,7 +38,8 @@ db.place.findAndModify( {
 				ref: '3',
 				name: 'Doceria',
 				picture:'doceria',
-				distance: '320'
+				distance: '320',
+				isbank: false
 			}
     },
     upsert: true,
@@ -51,7 +54,9 @@ db.place.findAndModify( {
 				ref: '4',
 				name: 'Maios Bank',
 				picture:'maios-bank',
-				distance: '900'
+				distance: '900',
+				isbank: true,
+				dono_id: ObjectId("52937324097cda8006000001")
 			}
     },
     upsert: true,

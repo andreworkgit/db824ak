@@ -40,7 +40,24 @@
                     <a href="widgets.html#" class="minimize" style="display: none;">Minimize</a>
                 </div>
                 <div class="panel-body">
-                   - Comece roubando pequenos comércios  sem sistema de segurança como padaria, bancas e docerias.
+                     <form class="form-horizontal" action="#">
+
+                     
+                      <div class="form-group">
+                          
+                          <label class="col-lg-4 control-label" for="normalInput">Banco</label>
+                          <div class="col-lg-8">
+                              <select name="select" id="select1" class="nostyle form-control" placeholder="Selecione um banco" >
+                                <option ></option>
+                                <% _.each(places,function(place) { %>
+                                  <option value="<%- place.ref %>" distance="<%- place.distance %>"><%- place.name %> > <%- place.distance %>m</option>
+                                <% }) %>
+                              </select>
+                          </div>
+
+                      </div>
+
+                      </form>
                 </div>
             </div>
          </div>

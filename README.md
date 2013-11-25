@@ -21,7 +21,7 @@ start server
 mongod --dbpath C:/mongodb/data/db
 
 write script in mongo
-mongo 127.0.0.1/sails-dobanks C:/nodejs/node_modules/sails/bin/projetos/dobanks/scripts/mongodb
+mongo 127.0.0.1/sails-dobanks C:/nodejs/node_modules/sails/bin/projetos/dobanks/scripts/mongodb/db.place.INS.UP.js
 mongo 127.0.0.1/sails-dobanks C:/nodejs/projetos/dobanks/scripts/mongodb/db.vehicle.INS.UP.js
 
 db.place.find().forEach(printjson)
@@ -39,6 +39,12 @@ db.user.update({provider:"google"},{ $unset : {vehicles: ""}},{multi:true});
 MANY TO MANY
 http://blog.markstarkman.com/blog/2011/09/15/mongodb-many-to-many-relationship-data-modeling/
 
+SQL-to-Mongo
+http://rickosborne.org/download/SQL-to-MongoDB.pdf
+
+MAP REDUCE TWO TABLES
+http://blog.knoldus.com/2013/02/03/joins-now-possible-in-mongodb/
+
 wget
 wget -c -r -P C:/fileswget http://www.
 wget -p -k -r -P C:/fileswget http://www.sug
@@ -49,3 +55,7 @@ wget -c -r -P /mnt/projetos_vbox/ http://www.
 
 note temp:
 remove user all
+
+db.runCommand({ mapreduce: "vehicle", map: function() { emit(1,{recs: 1}); },reduce: function(key,values){ var ret = {recs:0}; for(var i=0; i < values.length;i++){ ret.recs += values[i].recs; } return ret; }, out:'r1' });
+
+db.runCommand({ mapreduce: "vehicle", map: function() { emit({ ref: this.ref}, {vlalu: this.mkmperhour, recs: 1}); },reduce: function(key,values){ var ret = {refsum:0,msum:0,recs:0}; for(var i=0; i < values.length;i++){ ret.msum += values[i].vlalu; ret.recs += values[i].recs; ret.refsum += values[i].ref; } return ret; }, out:'r1' });

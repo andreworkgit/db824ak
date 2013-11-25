@@ -77,7 +77,7 @@ var supr_Options = {
 //load some plugins only if is needed
 Modernizr.load({
   test: Modernizr.placeholder,
-  nope: 'linker/js/jquery.placeholder.min.js',
+  nope: '/linker/js/jquery.placeholder.min.js',
   complete: function () {
 	//------------- placeholder fallback  -------------//
 	$('input[placeholder], textarea[placeholder]').placeholder();
@@ -85,7 +85,7 @@ Modernizr.load({
 });
 Modernizr.load({
   test: Modernizr.touch,
-  yep: ['linker/js/ios-orientationchange-fix.js', 'linker/js/jquery.ui.touch-punch.min.js']
+  yep: ['/linker/js/ios-orientationchange-fix.js', '/linker/js/jquery.ui.touch-punch.min.js']
 });
 
 //window resize events
