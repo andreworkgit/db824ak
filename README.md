@@ -22,7 +22,9 @@ mongod --dbpath C:/mongodb/data/db
 
 write script in mongo
 mongo 127.0.0.1/sails-dobanks C:/nodejs/node_modules/sails/bin/projetos/dobanks/scripts/mongodb/db.place.INS.UP.js
+
 mongo 127.0.0.1/sails-dobanks C:/nodejs/projetos/dobanks/scripts/mongodb/db.vehicle.INS.UP.js
+mongo 127.0.0.1/sails-dobanks C:/nodejs/projetos/dobanks/scripts/mongodb/db.place.INS.UP.js
 
 db.place.find().forEach(printjson)
 
@@ -44,6 +46,9 @@ http://rickosborne.org/download/SQL-to-MongoDB.pdf
 
 MAP REDUCE TWO TABLES
 http://blog.knoldus.com/2013/02/03/joins-now-possible-in-mongodb/
+
+performace node
+http://zgadzaj.com/benchmarking-nodejs-basic-performance-tests-against-apache-php
 
 wget
 wget -c -r -P C:/fileswget http://www.

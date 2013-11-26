@@ -39,22 +39,21 @@ module.exports = {
     Place.find({isbank:true},function foundPlaces(err,places){
 
       if(err) return next(err);
-        
+
       for(var i in places){
-        console.log(places[i].name);
+        //console.log(places[i].name);
 
         User.findOne({_id:places[i].dono_id}, function foundUser(err,userf){
-          console.dir(userf);
+          //console.dir(userf);
           places[i].dono_nome = userf.name;
         });
       }
 
-      console.dir(places);
+        res.view({
+            user : req.user,
+            places:places
+        });
 
-      res.view({
-          user : req.user,
-          places:places
-      });
 
     });
 

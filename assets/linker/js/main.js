@@ -1,9 +1,25 @@
 // make console.log safe to use
 window.console||(console={log:function(){}});
 
-var email_full = "apeed@gmail.com";
+//var email_full = "apeed@gmail.com";
+//console.dir(email_full.split("@"));
 
-console.dir(email_full.split("@"));
+
+$("#sel_banco_wb").select2({
+	formatSelection: function(place){
+		if(!place.id) return place.text;
+		var nome_dono = $("#sel_banco_wb option[value="+place.id+"]").attr("dono_nome");
+		var money = $("#sel_banco_wb option[value="+place.id+"]").attr("money_total");
+		//alert(nome_dono);
+		$("#wb_name_dono h3").html(nome_dono);
+		$("#wb_money h3").html('$'+money);
+		return place.text;
+	}
+
+});
+
+
+
 
 var distance_sel =0;
 var vehicle_sel = 0;
@@ -108,6 +124,12 @@ $(window).load(function(){
 
 // document ready function
 $(document).ready(function(){ 	
+
+	$("#wb-form-validate").validate({
+		rules: {
+			select1: "required"
+		}
+	 });
 
 	//make template fixed width
 	if(supr_Options.fixedWidth) {

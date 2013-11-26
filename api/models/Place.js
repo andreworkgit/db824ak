@@ -19,7 +19,8 @@ module.exports = {
   name: 'string',  
   picture:'string',
   distance: 'integer',
-  isbank: 'boolean'
+  isbank: 'boolean',
+  money_total: 'integer'
 
   	/*toJson: function(){
   		var obj = this.toObject();

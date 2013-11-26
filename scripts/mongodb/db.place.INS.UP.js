@@ -56,6 +56,7 @@ db.place.findAndModify( {
 				picture:'maios-bank',
 				distance: '900',
 				isbank: true,
+				money_total: '148992',
 				dono_id: ObjectId("52937324097cda8006000001")
 			}
     },
