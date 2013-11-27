@@ -118,14 +118,14 @@
                   <div class="page-header">
                                 <h4>Alvo</h4>
                             </div>
-                  <form class="form-horizontal" action="#">
+                  <form class="form-horizontal" action="/dashboard/travel/<%- user.id %>" method="post">
 
                      
                       <div class="form-group">
                           
                           <label class="col-lg-4 control-label" for="normalInput">Local do roubo</label>
                           <div class="col-lg-8">
-                              <select name="select" id="select1" class="nostyle form-control" placeholder="Selecione" >
+                              <select name="sel_place" id="sel_place" class="nostyle form-control" placeholder="Selecione" >
                                 <option ></option>
                                 <% _.each(places,function(place) { %>
                                   <option value="<%- place.ref %>" distance="<%- place.distance %>"><%- place.name %> > <%- place.distance %>m</option>
@@ -145,7 +145,7 @@
                           <label class="col-lg-4 control-label" for="normalInput">Transporte</label>
                           
                           <div class="col-lg-8">
-                            <select name="select" id="sel_vehicle" class="nostyle form-control" placeholder="Selecione" >
+                            <select name="sel_vehicle" id="sel_vehicle" class="nostyle form-control" placeholder="Selecione" >
                               <% _.each(vehicles,function(vehicle) { %>
                                 <option value="<%- vehicle.ref %>" mkmperhour="<%- vehicle.mkmperhour %>" vlalu="<%- vehicle.vlalu %>" <% if(user.transportation == vehicle.ref) { %> selected  <% } %>><%- vehicle.name %> > <%- vehicle.mkmperhour %>km/h > $<%- vehicle.vlalu %> </option>
                               <% }) %>  
@@ -179,7 +179,7 @@
                         </div>
                           </div>
                       </div>
-
+                      <input type="hidden" name="_csrf" value="<%= _csrf %>">
 
                   </form>      
                 </div>

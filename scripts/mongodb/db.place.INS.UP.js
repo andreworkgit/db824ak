@@ -57,7 +57,7 @@ db.place.findAndModify( {
 				distance: '900',
 				isbank: true,
 				money_total: '148992',
-				dono_id: ObjectId("52937324097cda8006000001")
+				dono_id: "5296177a998584f6ed1d0316" //colocar o ID do usuario válido
 			}
     },
     upsert: true,

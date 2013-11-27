@@ -55,6 +55,8 @@ var AuthController = {
                         res.view('500');
                         return;
                     }
+
+
                     res.redirect('/dashboard');
                     return;
                 });

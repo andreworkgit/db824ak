@@ -58,7 +58,11 @@ module.exports = {
     money: {
       type: 'integer',
       defaultsTo: 0
-    }  
+    }, 
+
+    banco: {
+      type: 'string',
+    }
 
   	/*toJson: function(){
   		var obj = this.toObject();

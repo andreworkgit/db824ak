@@ -24,11 +24,11 @@ $("#sel_banco_wb").select2({
 var distance_sel =0;
 var vehicle_sel = 0;
 
-$("#select1").select2({
+$("#sel_place").select2({
 	formatSelection: function(state){
 		if(!state.id) return state.text;
 		
-		distance_sel = $("#select1 option[value="+state.id+"]").attr("distance");
+		distance_sel = $("#sel_place option[value="+state.id+"]").attr("distance");
 		if(!vehicle_sel)
 			vehicle_sel = $("#sel_vehicle option[selected]").attr("mkmperhour");
 
@@ -60,7 +60,7 @@ $("#sel_vehicle").select2({
 		if(!state.id) return state.text;
 		
 		if(!distance_sel)
-			distance_sel = $("#select1 option[selected]").attr("distance");
+			distance_sel = $("#sel_place option[selected]").attr("distance");
 		vehicle_sel = $("#sel_vehicle option[value="+state.id+"]").attr("mkmperhour");
 
 		//console.log(vehicle_sel);
@@ -68,7 +68,10 @@ $("#sel_vehicle").select2({
 		var tempoInMinutes = calculeTimeForMinutes(distance_sel,vehicle_sel);
 
 		var tarifa_alu = $("#sel_vehicle option[value="+state.id+"]").attr("vlalu");
-		$("#tarifa_alu").html('$ '+tarifa_alu);
+		if(!tarifa_alu)
+			$("#tarifa_alu").html('Sem cobrança');
+		else
+			$("#tarifa_alu").html('$ '+tarifa_alu);
 
 		if(distance_sel>0){
 			
@@ -127,7 +130,7 @@ $(document).ready(function(){
 
 	$("#wb-form-validate").validate({
 		rules: {
-			select1: "required"
+			sel_banco_wb: "required"
 		}
 	 });
 
