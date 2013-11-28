@@ -118,7 +118,7 @@
                   <div class="page-header">
                                 <h4>Alvo</h4>
                             </div>
-                  <form class="form-horizontal" action="/dashboard/travel/<%- user.id %>" method="post">
+                  <form class="form-horizontal" action="/dashboard/travel" method="post">
 
                      
                       <div class="form-group">
@@ -179,6 +179,9 @@
                         </div>
                           </div>
                       </div>
+                      <input type="hidden" id="h_tarifa_alu"  name="h_tarifa_alu" value="">
+                      <input type="hidden" id="h_place_distance"  name="h_place_distance" value="">
+                      <input type="hidden" id="h_mkmperhour"  name="h_mkmperhour" value="">
                       <input type="hidden" name="_csrf" value="<%= _csrf %>">
 
                   </form>      

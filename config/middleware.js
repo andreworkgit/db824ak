@@ -40,12 +40,12 @@ var verifyHandler = function (token, tokenSecret, profile, done) {
 };
 
 passport.serializeUser(function (user, done) {
-    done(null, user.uid);
+    done(null, user.id);
     //done(null, user);
 });
 
-passport.deserializeUser(function (uid, done) {
-    User.findOne({uid: uid}).done(function (err, user) {
+passport.deserializeUser(function (id, done) {
+    User.findOne({id: id}).done(function (err, user) {
         done(err, user);
     });
 	//done(null, uid);

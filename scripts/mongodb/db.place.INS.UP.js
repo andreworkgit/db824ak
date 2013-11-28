@@ -8,6 +8,8 @@ db.place.findAndModify( {
 				name: 'Padaria',
 				picture:'padaria',
 				distance: '200',
+				vlboxmin: '33',
+				vlboxmax: '160',
 				isbank:false
 			}
     },
@@ -23,6 +25,8 @@ db.place.findAndModify( {
 				name: 'Banca de Jornal',	
 				picture:'banca-de-jornal',
 				distance: '240',
+				vlboxmin: '37',
+				vlboxmax: '170',
 				isbank: false
 			}
     },
@@ -39,6 +43,8 @@ db.place.findAndModify( {
 				name: 'Doceria',
 				picture:'doceria',
 				distance: '320',
+				vlboxmin: '22',
+				vlboxmax: '150',
 				isbank: false
 			}
     },

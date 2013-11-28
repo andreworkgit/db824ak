@@ -68,11 +68,35 @@ module.exports = {
 
   'travel' : function(req,res,next){
 
-    //console.log(req.param('id'));
+    //console.log(req.session.passport.user);
 
-    res.view({
-        user : req.user
+    User.findOne(req.session.passport.user,function foundUser(err,user){
+       if(err) return next(err);
+       if(req.param('h_tarifa_alu')>user.money){
+          return res.redirect('/dashboard');
+       }
+
+        var convertMetroInKm = (req.param('h_place_distance')/1000).toFixed(2);
+        var tempoInHour = convertMetroInKm/req.param('h_mkmperhour');
+        var minutes_travel = Math.round((tempoInHour*60).toFixed(2)) * 60000;
+        //console.log(req.param('h_place_distance'));
+        //console.log(req.param('h_mkmperhour'));
+        //console.log(minutes_travel);
+
+        setTimeout(function(){
+          console.log('redirecionou '+ user.name);
+          //return res.redirect('/dashboard');
+        },minutes_travel);
+
+        res.view({
+            user : req.user,
+            minutes_travel: minutes_travel
+        });
+
     });
+
+
+    
 
   },
 

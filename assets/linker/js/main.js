@@ -5,6 +5,7 @@ window.console||(console={log:function(){}});
 //console.dir(email_full.split("@"));
 
 
+
 $("#sel_banco_wb").select2({
 	formatSelection: function(place){
 		if(!place.id) return place.text;
@@ -18,9 +19,6 @@ $("#sel_banco_wb").select2({
 
 });
 
-
-
-
 var distance_sel =0;
 var vehicle_sel = 0;
 
@@ -31,6 +29,9 @@ $("#sel_place").select2({
 		distance_sel = $("#sel_place option[value="+state.id+"]").attr("distance");
 		if(!vehicle_sel)
 			vehicle_sel = $("#sel_vehicle option[selected]").attr("mkmperhour");
+
+		$("#h_place_distance").val(distance_sel);
+		$("#h_mkmperhour").val(vehicle_sel);
 
 		//console.log(vehicle_sel);
 		
@@ -63,15 +64,21 @@ $("#sel_vehicle").select2({
 			distance_sel = $("#sel_place option[selected]").attr("distance");
 		vehicle_sel = $("#sel_vehicle option[value="+state.id+"]").attr("mkmperhour");
 
+		$("#h_place_distance").val(distance_sel);
+		$("#h_mkmperhour").val(vehicle_sel);
+
 		//console.log(vehicle_sel);
 		
 		var tempoInMinutes = calculeTimeForMinutes(distance_sel,vehicle_sel);
 
 		var tarifa_alu = $("#sel_vehicle option[value="+state.id+"]").attr("vlalu");
-		if(!tarifa_alu)
+		if(!tarifa_alu){
 			$("#tarifa_alu").html('Sem cobrança');
-		else
+		}
+		else{
 			$("#tarifa_alu").html('$ '+tarifa_alu);
+			$("#h_tarifa_alu").val(tarifa_alu);
+		}
 
 		if(distance_sel>0){
 			
@@ -126,7 +133,20 @@ $(window).load(function(){
 });
 
 // document ready function
-$(document).ready(function(){ 	
+$(document).ready(function(){ 
+
+	//animated progress bar
+	var iEnd = new Date().setTime(new Date().getTime() + minutes_travel); // now plus 15 secs
+  	$('#progress1').anim_progressbar({
+  										finish: iEnd
+  									});
+  	if(minutes_travel>0){
+	  	setTimeout(function(){
+	  		alert('Assalto concluído');
+	  		window.location = "/dashboard";
+	  	},minutes_travel);	
+  	}
+  	//Math.floor((Math.random()*100)+1);
 
 	$("#wb-form-validate").validate({
 		rules: {
