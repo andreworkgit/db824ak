@@ -74,24 +74,35 @@ module.exports = {
        if(err) return next(err);
        if(req.param('h_tarifa_alu')>user.money){
           return res.redirect('/dashboard');
-       }
+       }else{
 
-        var convertMetroInKm = (req.param('h_place_distance')/1000).toFixed(2);
-        var tempoInHour = convertMetroInKm/req.param('h_mkmperhour');
-        var minutes_travel = Math.round((tempoInHour*60).toFixed(2)) * 60000;
-        //console.log(req.param('h_place_distance'));
-        //console.log(req.param('h_mkmperhour'));
-        //console.log(minutes_travel);
+          var convertMetroInKm = (req.param('h_place_distance')/1000).toFixed(2);
+          var tempoInHour = convertMetroInKm/req.param('h_mkmperhour');
+          var minutes_travel = Math.round((tempoInHour*60).toFixed(2)) * 60000;
+          //console.log(req.param('h_place_distance'));
+          //console.log(req.param('h_mkmperhour'));
+          //console.log(minutes_travel);
 
-        setTimeout(function(){
-          console.log('redirecionou '+ user.name);
-          //return res.redirect('/dashboard');
-        },minutes_travel);
+          setTimeout(function(){
+            console.log('redirecionou '+ user.name);
+              
+            var travelObj = {
+              user_id: user.id,
+              place_id: sel_place,
+            };
 
-        res.view({
-            user : req.user,
-            minutes_travel: minutes_travel
-        });
+            Travel.create(userObj,function userCreated(err,user){
+
+            });
+            //return res.redirect('/dashboard');
+          },minutes_travel);
+
+          res.view({
+              user : req.user,
+              minutes_travel: minutes_travel
+          });
+
+      }
 
     });
 
