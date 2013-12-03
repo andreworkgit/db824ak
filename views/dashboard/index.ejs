@@ -128,7 +128,7 @@
                               <select name="sel_place" id="sel_place" class="nostyle form-control" placeholder="Selecione" >
                                 <option ></option>
                                 <% _.each(places,function(place) { %>
-                                  <option value="<%- place.ref %>" distance="<%- place.distance %>"><%- place.name %> > <%- place.distance %>m</option>
+                                  <option value="<%- place.id %>" distance="<%- place.distance %>"><%- place.name %> > <%- place.distance %>m</option>
                                 <% }) %>
                                  <option value="4" distance="342">asas</option>
                                 <option value="5" distance="1873">asas</option>
@@ -147,7 +147,7 @@
                           <div class="col-lg-8">
                             <select name="sel_vehicle" id="sel_vehicle" class="nostyle form-control" placeholder="Selecione" >
                               <% _.each(vehicles,function(vehicle) { %>
-                                <option value="<%- vehicle.ref %>" mkmperhour="<%- vehicle.mkmperhour %>" vlalu="<%- vehicle.vlalu %>" <% if(user.transportation == vehicle.ref) { %> selected  <% } %>><%- vehicle.name %> > <%- vehicle.mkmperhour %>km/h > $<%- vehicle.vlalu %> </option>
+                                <option value="<%- vehicle.id %>" mkmperhour="<%- vehicle.mkmperhour %>" vlalu="<%- vehicle.vlalu %>" <% if(user.transportation == vehicle.ref) { %> selected  <% } %>><%- vehicle.name %> > <%- vehicle.mkmperhour %>km/h > $<%- vehicle.vlalu %> </option>
                               <% }) %>  
                             </select>
                           </div>

@@ -83,24 +83,35 @@ module.exports = {
           //console.log(req.param('h_mkmperhour'));
           //console.log(minutes_travel);
 
-          setTimeout(function(){
-            console.log('redirecionou '+ user.name);
+          Place.findOne(sel_place, function foundPlaces(err,place){
+
+              var value_assalt = Math.floor((Math.random()*place.vlboxmax)+place.vlboxmin);
+
+              setTimeout(function(){
+                console.log('redirecionou '+ user.name);
+
+                  
+                var travelObj = {
+                  user_id: user.id,
+                  place_id: sel_place,
+                  vehicle_id: sel_vehicle,
+                  value_assalt: value_assalt
+                };
+
+                Travel.create(userObj,function userCreated(err,travel){
+                  return res.redirect('/dashboard');
+                });
               
-            var travelObj = {
-              user_id: user.id,
-              place_id: sel_place,
-            };
+              },minutes_travel);
 
-            Travel.create(userObj,function userCreated(err,user){
+              res.view({
+                  user : req.user,
+                  minutes_travel: minutes_travel
+              });
 
-            });
-            //return res.redirect('/dashboard');
-          },minutes_travel);
 
-          res.view({
-              user : req.user,
-              minutes_travel: minutes_travel
           });
+
 
       }
 
