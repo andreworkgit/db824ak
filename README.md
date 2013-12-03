@@ -17,6 +17,7 @@ https://github.com/dylang/shortid
 Start sails
 casa
 node.exe ../../node_modules/sails/bin/sails lift
+node.exe ../../sails lift
 
 mongo
 start server
