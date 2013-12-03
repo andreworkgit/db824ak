@@ -25,49 +25,25 @@ module.exports = {
 
         if(err) return next(err);
 
-        Travel.find().limit(5).sort('createdAt').exec(
-          function(err,travels){
+        Travel.find()
+        .limit(5).sort('createdAt')
+        .then(function(travel){
+            console.dir(travel);
+            console.log(travel.place_id);
+            
 
-            for(var i in travels){
-              //console.log(travels[i].value_assalt);
-              //console.log(travels[i].place_id);
+            console.dir(places);
+            //return [travel.id, places];
+        }).fail(function(err){
+            // An error occured
+        })
 
-              Place.findOne({id:travels[i].place_id}, function foundUser(err,palcefor){
-                //return palcefor.distance;
-                //console.dir(palcefor);
-                //console.log(palcefor.distance);
-                //travels.push({name_place: palcefor.distance});
-                //travels[i].name_place = palcefor.distance;
-              });
-
-              //console.log(field);
-              
-
-              Vehicle.findOne({id:travels[i].vehicle_id}, function foundUser(err,vehiclefor){
-                //console.dir(userf);
-                console.log(vehiclefor.name);
-                //travels[i].name_vehicle = vehiclefor.name;
-              });
-
-
-
-
-            }
-
-
-            // console.dir(objC); 
-            //console.dir(travels);
-
-            res.view({
+        res.view({
               user : req.user,
               places:places,
               vehicles: vehicles,
-              travels: travels
+              travels:false
             });
-
-
-          }
-        );
         
         
       });
