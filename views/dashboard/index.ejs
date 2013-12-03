@@ -61,7 +61,7 @@
                 <div style="margin-bottom: 20px;">
                       <ul id="myTab" class="nav nav-tabs pattern">
                           <li class="active"><a href="#home" data-toggle="tab">Dados</a></li>
-                          <li class=""><a href="#profile" data-toggle="tab">Meus veículos</a></li>
+                          <li class=""><a href="#assalt" data-toggle="tab">Últimos Assaltos</a></li>
                           <li class=""><a href="#profile" data-toggle="tab">Meus bancos</a></li>
                           <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lojas <b class="caret"></b></a>
@@ -96,7 +96,7 @@
                               <label class="col-lg-6 control-label" for="normalInput"><i class="icon8  icomoon-icon-tag-5 red"></i>Tarifa bancária</label>
                               
                               <div class="col-lg-6">
-                                <h4 class="red">$ 44/mês</h4>
+                                <h4 class="red">$1/roubo</h4>
                                 
                               </div>
                           </div>
@@ -104,8 +104,29 @@
 
                              
                           </div>
-                          <div class="tab-pane fade" id="profile">
-                              <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. </p>
+                          <div class="tab-pane fade" id="assalt">
+                              <p>
+                                <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th>Local</th>
+                                    <th>Transporte</th>
+                                    <th>Valor roubado</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <% _.each(travels,function(travel) {  %>
+                                    <tr>
+                                      <td><%- travel.name_place %></td>
+                                      <td><%- travel.name_vehicle %></td>
+                                      <td>$<%- travel.value_assalt %></td>
+                                    </tr>
+                                  <% }) %> 
+                                </tbody>
+                            </table>
+
+
+                              </p>
                           </div>
                           <div class="tab-pane fade" id="dropdown1">
                               <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. </p>
@@ -130,12 +151,6 @@
                                 <% _.each(places,function(place) { %>
                                   <option value="<%- place.id %>" distance="<%- place.distance %>"><%- place.name %> > <%- place.distance %>m</option>
                                 <% }) %>
-                                 <option value="4" distance="342">asas</option>
-                                <option value="5" distance="1873">asas</option>
-                                <option value="6" distance="2658">dddd</option>
-                                <option value="7" distance="12658">ffff33</option>
-                                <option value="8" distance="13658">ffff44</option>
-                                <option value="9" distance="15000">fffff555f</option>
                               </select>
                           </div>
 
@@ -146,9 +161,9 @@
                           
                           <div class="col-lg-8">
                             <select name="sel_vehicle" id="sel_vehicle" class="nostyle form-control" placeholder="Selecione" >
-                              <% _.each(vehicles,function(vehicle) { %>
+                              <% _.each(vehicles,function(vehicle) { if(user.money >= vehicle.vlalu) { %>
                                 <option value="<%- vehicle.id %>" mkmperhour="<%- vehicle.mkmperhour %>" vlalu="<%- vehicle.vlalu %>" <% if(user.transportation == vehicle.ref) { %> selected  <% } %>><%- vehicle.name %> > <%- vehicle.mkmperhour %>km/h > $<%- vehicle.vlalu %> </option>
-                              <% }) %>  
+                              <% } }) %>  
                             </select>
                           </div>
                       </div>

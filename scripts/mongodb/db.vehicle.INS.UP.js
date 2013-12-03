@@ -41,7 +41,8 @@ db.vehicle.findAndModify( {
     	$set: {	
     			ref: '1',
 				name: 'A pé',
-				mkmperhour: '5'
+				mkmperhour: '5',
+				vlalu: '0'
 			}
     },
     upsert: true,

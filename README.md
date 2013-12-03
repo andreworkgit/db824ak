@@ -7,6 +7,7 @@ http://git-scm.com/book/pt-br/Git-Essencial-Trabalhando-com-Remotos
 http://stackoverflow.com/questions/9343189/did-you-run-git-update-server-info-error-on-a-github-repository
 http://www.suggeelson.com/themes/supr/
 http://www.script-tutorials.com/demos/129/index.html
+https://npmjs.org/package/waterline
 
 windows resizer
 https://chrome.google.com/webstore/detail/window-resizer/kkelicaakdanhinjdeammmilcgefonfh

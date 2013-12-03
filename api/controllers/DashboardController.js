@@ -24,12 +24,52 @@ module.exports = {
       Vehicle.find(function foundVehicles(err,vehicles){
 
         if(err) return next(err);
+
+        Travel.find().limit(5).sort('createdAt').exec(
+          function(err,travels){
+
+            for(var i in travels){
+              //console.log(travels[i].value_assalt);
+              //console.log(travels[i].place_id);
+
+              Place.findOne({id:travels[i].place_id}, function foundUser(err,palcefor){
+                //return palcefor.distance;
+                //console.dir(palcefor);
+                //console.log(palcefor.distance);
+                //travels.push({name_place: palcefor.distance});
+                //travels[i].name_place = palcefor.distance;
+              });
+
+              //console.log(field);
+              
+
+              Vehicle.findOne({id:travels[i].vehicle_id}, function foundUser(err,vehiclefor){
+                //console.dir(userf);
+                console.log(vehiclefor.name);
+                //travels[i].name_vehicle = vehiclefor.name;
+              });
+
+
+
+
+            }
+
+
+            // console.dir(objC); 
+            //console.dir(travels);
+
+            res.view({
+              user : req.user,
+              places:places,
+              vehicles: vehicles,
+              travels: travels
+            });
+
+
+          }
+        );
         
-        res.view({
-          user : req.user,
-          places:places,
-          vehicles: vehicles
-        });
+        
       });
 
     });
@@ -87,10 +127,12 @@ module.exports = {
 
               var value_assalt = Math.floor((Math.random()*place.vlboxmax)+place.vlboxmin);
 
-              setTimeout(function(){
-                console.log('redirecionou '+ user.name);
+              minutes_travel = 10000;
+              var timeExec = false;
 
-                  
+              timeExec = setTimeout(function(){
+                //console.log('redirecionou '+ user.name);
+
                 var travelObj = {
                   user_id: user.id,
                   place_id: req.param('sel_place'),
@@ -99,8 +141,8 @@ module.exports = {
                 };
 
                 Travel.create(travelObj,function userCreated(err,travel){
-                  //res.redirect('/dashboard');
-                  var sum_money = user.money + value_assalt;
+                  
+                  var sum_money = (user.money + value_assalt) - req.param('h_tarifa_alu');
                   var userObj = {
                     money: sum_money
                   }
@@ -111,6 +153,8 @@ module.exports = {
                     /*if(err) { 
                       return res.redirect('/user/edit/'+req.param('id'));
                     }*/
+                    //res.redirect('/dashboard');
+                    return true;
 
                   });
 
@@ -118,6 +162,7 @@ module.exports = {
                 });
               
               },minutes_travel);
+            
 
               res.view({
                   user : req.user,
