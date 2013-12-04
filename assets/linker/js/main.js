@@ -50,6 +50,24 @@ $("#sel_place").select2({
 });
 
 
+$("#sel_weapon").select2({
+	formatSelection: function(state){
+		if(!state.id) return state.text;
+
+		var price_weapon = $("#sel_weapon option[value="+state.id+"]").attr("price");
+
+		if(price_weapon){
+			$("#price_weapon").html('$ '+price_weapon);
+		}
+		
+		return state.text;
+	}
+
+});
+
+
+
+
 function calculeTimeForMinutes(distance_sel,vehicle_sel){
 	var convertMetroInKm = (distance_sel/1000).toFixed(2);
 	var tempoInHour = convertMetroInKm/vehicle_sel;
@@ -151,6 +169,12 @@ $(document).ready(function(){
 	$("#wb-form-validate").validate({
 		rules: {
 			sel_banco_wb: "required"
+		}
+	 });
+
+	$("#form-store-weapons-validate").validate({
+		rules: {
+			sel_weapon: "required"
 		}
 	 });
 

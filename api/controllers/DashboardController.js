@@ -25,42 +25,44 @@ module.exports = {
 
         if(err) return next(err);
 
-        Travel.find()
-        .limit(5).sort('createdAt DESC')
-        .then(function(travel){
-            
-            for(var i in travel){
+        Weapons.find(function foundWeapons(err,weapons){
 
-              for(var j in places){
-                if(places[j].id == travel[i].place_id){
-                  travel[i].place_name = places[j].name; 
+          Travel.find()
+          .limit(5).sort('createdAt DESC')
+          .then(function(travel){
+              
+              for(var i in travel){
+
+                for(var j in places){
+                  if(places[j].id == travel[i].place_id){
+                    travel[i].place_name = places[j].name; 
+                  }
                 }
+
+                for(var k in vehicles){
+                  if(vehicles[k].id == travel[i].vehicle_id){
+                    travel[i].vehicle_name = vehicles[k].name; 
+                  }
+                }
+
               }
 
-              for(var k in vehicles){
-                if(vehicles[k].id == travel[i].vehicle_id){
-                  travel[i].vehicle_name = vehicles[k].name; 
-                }
-              }
+              //console.dir(travel);
 
-            }
+              res.view({
+                user : req.user,
+                places:places,
+                vehicles: vehicles,
+                travels:travel,
+                weapons: weapons
+              });
 
-            //console.dir(travel);
+          }).fail(function(err){
+              if(err) return next(err);
+          })
+ 
+      });
 
-            res.view({
-              user : req.user,
-              places:places,
-              vehicles: vehicles,
-              travels:travel
-            });
-
-        }).fail(function(err){
-            if(err) return next(err);
-        })
-
-        
-        
-        
       });
 
     });

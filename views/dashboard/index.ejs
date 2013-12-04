@@ -66,7 +66,7 @@
                           <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lojas <b class="caret"></b></a>
                               <ul class="dropdown-menu">
-                                  <li><a href="#dropdown1" data-toggle="tab">Armas</a></li>
+                                  <li><a href="#storeweapons" data-toggle="tab">Armas</a></li>
                                   <li><a href="#dropdown2" data-toggle="tab">Equipamentos</a></li>
                                </ul>
                           </li>
@@ -128,8 +128,46 @@
 
                               </p>
                           </div>
-                          <div class="tab-pane fade" id="dropdown1">
-                              <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. </p>
+                          <div class="tab-pane fade" id="storeweapons">
+                            <div class="page-header">
+                                <h4>Compre armas</h4>
+                            </div>
+                            <form class="form-horizontal" action="/dashboard/travel" method="post" id="form-store-weapons-validate">
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label" for="normalInput"></label>
+                                    <div class="col-lg-8">
+                                        <select name="sel_weapon" id="sel_weapon" class="nostyle form-control" placeholder="Selecione" >
+                                          <option ></option>
+                                          <% _.each(weapons,function(weapon) { %>
+                                            <option value="<%- weapon.id %>" price="<%- weapon.price %>" ><%- weapon.name %> > $<%- weapon.price %></option>
+                                          <% }) %>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                  <label class="col-lg-4 control-label" for="normalInput"><i class="icon8  icomoon-icon-tag-5 red"></i>Preço</label>
+                                  <div class="col-lg-8">
+                                    <h4 class="red" id="price_weapon">$ 0</h4>
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label" for="normalInput"><i class="icon8 icomoon-icon-coin green"></i>Meu dinheiro </label>
+                                    
+                                    <div class="col-lg-8">
+                                      <h3 class="green">$<%- user.money %></h3>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <div class="col-lg-offset-4 col-lg-8">
+                                      <button type="submit" class="btn btn-info">Comprar</button>
+                                  </div>
+                              </div>
+
+                              </form>
                           </div>
                           <div class="tab-pane fade" id="dropdown2">
                               <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master.</p>

@@ -32,6 +32,7 @@ mongo 127.0.0.1/sails-dobanks C:/nodejs/node_modules/sails/bin/projetos/dobanks/
 mongo 127.0.0.1/sails-dobanks C:/nodejs/projetos/dobanks/scripts/mongodb/db.vehicle.INS.UP.js
 mongo 127.0.0.1/sails-dobanks C:/nodejs/projetos/dobanks/scripts/mongodb/db.place.INS.UP.js
 mongo 127.0.0.1/sails-dobanks C:/nodejs/projetos/dobanks/scripts/mongodb/db.user.CRUD.js
+mongo 127.0.0.1/sails-dobanks C:/nodejs/projetos/dobanks/scripts/mongodb/db.weapons.CRUD.js
 
 db.place.find().forEach(printjson)
 
