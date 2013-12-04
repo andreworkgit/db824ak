@@ -26,24 +26,39 @@ module.exports = {
         if(err) return next(err);
 
         Travel.find()
-        .limit(5).sort('createdAt')
+        .limit(5).sort('createdAt DESC')
         .then(function(travel){
-            console.dir(travel);
-            console.log(travel.place_id);
             
+            for(var i in travel){
 
-            console.dir(places);
-            //return [travel.id, places];
-        }).fail(function(err){
-            // An error occured
-        })
+              for(var j in places){
+                if(places[j].id == travel[i].place_id){
+                  travel[i].place_name = places[j].name; 
+                }
+              }
 
-        res.view({
+              for(var k in vehicles){
+                if(vehicles[k].id == travel[i].vehicle_id){
+                  travel[i].vehicle_name = vehicles[k].name; 
+                }
+              }
+
+            }
+
+            //console.dir(travel);
+
+            res.view({
               user : req.user,
               places:places,
               vehicles: vehicles,
-              travels:false
+              travels:travel
             });
+
+        }).fail(function(err){
+            if(err) return next(err);
+        })
+
+        
         
         
       });
