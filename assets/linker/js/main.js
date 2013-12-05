@@ -58,6 +58,7 @@ $("#sel_weapon").select2({
 
 		if(price_weapon){
 			$("#price_weapon").html('$ '+price_weapon);
+			$("#h_weapon_price").val(price_weapon);
 		}
 		
 		return state.text;

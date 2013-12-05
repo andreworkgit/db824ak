@@ -98,6 +98,18 @@ module.exports = {
 
   },
 
+  'buy_weapon' : function(req,res,next){
+
+    User.findOne(req.session.passport.user,function foundUser(err,user){
+       if(err) return next(err);
+       if(req.param('h_weapon_price')>user.money){
+          return res.redirect('/dashboard');
+       }else{
+          
+       }
+    });
+
+  },
 
   'travel' : function(req,res,next){
 
