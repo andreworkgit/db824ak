@@ -62,6 +62,10 @@ module.exports = {
 
     banco: {
       type: 'string',
+    },
+
+    weapons: {
+      type: 'array'
     }
 
   	/*toJson: function(){

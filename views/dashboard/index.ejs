@@ -132,7 +132,7 @@
                             <div class="page-header">
                                 <h4>Compre armas</h4>
                             </div>
-                            <form class="form-horizontal" action="/dashboard/travel" method="post" id="form-store-weapons-validate">
+                            <form class="form-horizontal" action="/dashboard/buy_weapon" method="post" id="form-store-weapons-validate">
                                 <div class="form-group">
                                     <label class="col-lg-4 control-label" for="normalInput"></label>
                                     <div class="col-lg-8">
@@ -167,6 +167,7 @@
                                   </div>
                               </div>
                               <input type="hidden" id="h_weapon_price"  name="h_weapon_price" value="">
+                              <input type="hidden" name="_csrf" value="<%= _csrf %>">
                               </form>
                           </div>
                           <div class="tab-pane fade" id="dropdown2">

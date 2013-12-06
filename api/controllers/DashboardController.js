@@ -105,7 +105,20 @@ module.exports = {
        if(req.param('h_weapon_price')>user.money){
           return res.redirect('/dashboard');
        }else{
-          
+          var userwObj = {
+                    user_id : req.session.passport.user,
+                    weapon_id: req.param('sel_weapon')
+                  }
+          Userweapons.create(user.id,userwObj, function userweaponCreated(err){
+
+            //VERIFICAR TRAVAMENTO PARA ESTE ERRO
+            /*if(err) { 
+              return res.redirect('/user/edit/'+req.param('id'));
+            }*/
+            return res.redirect('/dashboard');
+            
+
+          });
        }
     });
 
