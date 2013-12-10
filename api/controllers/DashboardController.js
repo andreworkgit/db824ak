@@ -47,6 +47,16 @@ module.exports = {
 
               }
 
+              Userweapons.find({id: req.session.passport.user}, function foundUsersweapons(err,userweapons){
+                for(var i in userweapons){
+                  for(var j in weapons){
+                    if(weapons[j].id == userweapons[i].weapon_id){
+                      userweapons[i].weapon_name = weapons[j].name;
+                    }
+                  }
+                }  
+              });
+
               //console.dir(travel);
 
               res.view({
