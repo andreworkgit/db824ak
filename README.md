@@ -8,6 +8,7 @@ http://stackoverflow.com/questions/9343189/did-you-run-git-update-server-info-er
 http://www.suggeelson.com/themes/supr/
 http://www.script-tutorials.com/demos/129/index.html
 https://npmjs.org/package/waterline
+http://underscorejs.org/#keys
 
 windows resizer
 https://chrome.google.com/webstore/detail/window-resizer/kkelicaakdanhinjdeammmilcgefonfh
@@ -54,6 +55,7 @@ http://rickosborne.org/download/SQL-to-MongoDB.pdf
 
 MAP REDUCE TWO TABLES
 http://blog.knoldus.com/2013/02/03/joins-now-possible-in-mongodb/
+http://stackoverflow.com/questions/17860382/how-can-i-group-an-array-of-json-objects-by-month
 
 performace node
 http://zgadzaj.com/benchmarking-nodejs-basic-performance-tests-against-apache-php

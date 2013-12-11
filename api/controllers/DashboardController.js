@@ -47,25 +47,48 @@ module.exports = {
 
               }
 
-              Userweapons.find({id: req.session.passport.user}, function foundUsersweapons(err,userweapons){
+              Userweapons.find({user_id: req.session.passport.user}, function foundUsersweapons(err,userweapons){
+                var total_weapon = 0,aux_id,newuserweapons = new Array();
                 for(var i in userweapons){
                   for(var j in weapons){
+                    //if(weapons[j].id == userweapons[i].weapon_id && aux_id != userweapons[i].weapon_id){
                     if(weapons[j].id == userweapons[i].weapon_id){
+                    
                       userweapons[i].weapon_name = weapons[j].name;
+                      //newuserweapons[i].weapon_name = weapons[j].name;
+                      total_weapon++;
+                      newuserweapons.push({weapon_name:weapons[j].name,total: total_weapon});
+                      //aux_id = userweapons[i].weapon_id;
+                      
                     }
                   }
+                  //userweapons[i].weapon_total = total_weapon;
+                  //newuserweapons[i].weapon_total = total_weapon;
                 }  
+
+                var groups = _.groupBy(userweapons,"weapon_name");
+
+                console.dir(typeof userweapons);
+                console.dir(typeof newuserweapons);
+                //console.dir(newuserweapons);
+                console.dir(userweapons);
+                console.dir(groups);
+
+                res.view({
+                  user : req.user,
+                  places:places,
+                  vehicles: vehicles,
+                  travels:travel,
+                  weapons: weapons,
+                  myweapons:groups
+                });
+
+
               });
 
               //console.dir(travel);
 
-              res.view({
-                user : req.user,
-                places:places,
-                vehicles: vehicles,
-                travels:travel,
-                weapons: weapons
-              });
+              
 
           }).fail(function(err){
               if(err) return next(err);
