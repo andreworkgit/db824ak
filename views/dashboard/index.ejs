@@ -40,25 +40,9 @@
                     <a href="widgets.html#" class="minimize" style="display: none;">Minimize</a>
                 </div>
                 <div class="panel-body">
-                   - Comece roubando pequenos comércios  sem sistema de segurança como padaria, bancas e docerias.
-                </div>
-            </div>
-         </div>
-
-        <div class="col-lg-4">
-
-           <div class="panel panel-default">
-
-                <div class="panel-heading">
-                    <h4>
-                        <span class="icon16  entypo-icon-center"></span>
-                        <span>Ação</span>
-                    </h4>
-
-                </div>
-                <div class="panel-body">
-
-                <div style="margin-bottom: 20px;">
+                   <p>- Comece roubando pequenos comércios  sem sistema de segurança como padaria, bancas e docerias. </p>
+                
+                   <div style="margin-bottom: 20px;">
                       <ul id="myTab" class="nav nav-tabs pattern">
                           <li class="active"><a href="#home" data-toggle="tab">Dados</a></li>
                           <li class=""><a href="#assalt" data-toggle="tab">Últimos Assaltos</a></li>
@@ -109,11 +93,15 @@
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="tab4">
-                                            <p>Nenhuma disponível
+                                            <p>
+                                                <select name="my_weapon" id="my_weapon" class="nostyle form-control" placeholder="Veja" >
+                                                  <option ></option>
 
-                                              <% _.each(myweapons,function(v,k) {  %>
-                                                <%- k %> <%- v.length %> :
-                                              <% })  %>
+                                                  <% _.each(myweapons,function(v,k) {  %>
+                                                    <option value=""><%- k %> > Qtd: <%- v.length %></option>
+                                                  <% }) %> 
+                                                </select>
+                                               
                                             </p>
                                         </div>
                                         <div class="tab-pane" id="tab5">
@@ -153,12 +141,27 @@
                               </p>
                           </div>
                           <div class="tab-pane fade" id="storeweapons">
+
                             <div class="page-header">
                                 <h4>Compre armas</h4>
                             </div>
                             <form class="form-horizontal" action="/dashboard/buy_weapon" method="post" id="form-store-weapons-validate">
-                                <div class="form-group">
+                                
+                                 <div class="form-group">
                                     <label class="col-lg-4 control-label" for="normalInput"></label>
+                                    <div class="col-lg-8">
+                                        <select name="sel_what_weapon" id="sel_what_weapon" class="nostyle form-control" placeholder="Para min ou Banco?" >
+                                         <option ></option>
+                                         <option value="1">Para min</option>
+                                         <option value="2">Para a segurança do banco</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label" for="normalInput" id="label_sel_weapon"></label>
                                     <div class="col-lg-8">
                                         <select name="sel_weapon" id="sel_weapon" class="nostyle form-control" placeholder="Selecione" >
                                           <option ></option>
@@ -199,9 +202,22 @@
                           </div>
                       </div>
                   </div>
-                  <div class="page-header">
-                                <h4>Alvo</h4>
-                            </div>
+                </div>
+            </div>
+         </div>
+
+        <div class="col-lg-4">
+
+           <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    <h4>
+                        <span class="icon16  entypo-icon-center"></span>
+                        <span>Alvo</span>
+                    </h4>
+
+                </div>
+                <div class="panel-body">
                   <form class="form-horizontal" action="/dashboard/travel" method="post">
 
                      

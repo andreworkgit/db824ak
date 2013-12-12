@@ -42,13 +42,13 @@ var AuthController = {
             })(req, res);
     },
 
-    'google': function (req, res) {
+    'google': function (req, res,next) {
         passport.authenticate('google', { 
                 failureRedirect: '/', 
                 scope:[ 'https://www.googleapis.com/auth/plus.login',
                         'https://www.googleapis.com/auth/userinfo.profile',
                         'https://www.googleapis.com/auth/userinfo.email'] },
-            function (err, user) {
+            function (err, user,info) {
                 req.logIn(user, function (err) {
                     if (err) {
                         console.log(err);
@@ -60,7 +60,7 @@ var AuthController = {
                     res.redirect('/dashboard');
                     return;
                 });
-            })(req, res);
+            })(req, res,next);
     },
 
     'google/callback': function (req, res) {

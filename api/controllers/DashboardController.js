@@ -68,11 +68,11 @@ module.exports = {
 
                 var groups = _.groupBy(userweapons,"weapon_name");
 
-                console.dir(typeof userweapons);
-                console.dir(typeof newuserweapons);
+                //console.dir(typeof userweapons);
+                //console.dir(typeof newuserweapons);
                 //console.dir(newuserweapons);
-                console.dir(userweapons);
-                console.dir(groups);
+                //console.dir(userweapons);
+                //console.dir(groups);
 
                 res.view({
                   user : req.user,

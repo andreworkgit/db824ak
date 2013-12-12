@@ -66,6 +66,29 @@ $("#sel_weapon").select2({
 
 });
 
+$("#my_weapon").select2({
+	formatSelection: function(state){
+		if(!state.id) return state.text;
+
+		return state.text;
+	}
+
+});
+
+$("#sel_what_weapon").select2({
+	formatSelection: function(state){
+		if(!state.id) return state.text;
+
+		if(state.id == 2){
+			$("#label_sel_weapon").html("Segurança c/:");
+		}else{
+			$("#label_sel_weapon").html("");
+		}	
+		return state.text;
+	}
+
+});
+
 
 
 
