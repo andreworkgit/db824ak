@@ -147,6 +147,7 @@
                             </div>
                             <form class="form-horizontal" action="/dashboard/buy_weapon" method="post" id="form-store-weapons-validate">
                                 
+                                <% if(tembanco) { %>
                                  <div class="form-group">
                                     <label class="col-lg-4 control-label" for="normalInput"></label>
                                     <div class="col-lg-8">
@@ -158,6 +159,7 @@
                                     </div>
 
                                 </div>
+                                <% } %>
 
                                 
                                 <div class="form-group">
@@ -165,9 +167,9 @@
                                     <div class="col-lg-8">
                                         <select name="sel_weapon" id="sel_weapon" class="nostyle form-control" placeholder="Selecione" >
                                           <option ></option>
-                                          <% _.each(weapons,function(weapon) { %>
+                                          <% _.each(weapons,function(weapon) { if(user.money >= weapon.price) { %>
                                             <option value="<%- weapon.id %>" price="<%- weapon.price %>" ><%- weapon.name %> > $<%- weapon.price %></option>
-                                          <% }) %>
+                                          <% } }) %>
                                         </select>
                                     </div>
 

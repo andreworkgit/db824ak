@@ -27,6 +27,8 @@ module.exports = {
 
         Weapons.find(function foundWeapons(err,weapons){
 
+          var tembanco = false;
+
           Travel.find()
           .limit(5).sort('createdAt DESC')
           .then(function(travel){
@@ -37,6 +39,11 @@ module.exports = {
                   if(places[j].id == travel[i].place_id){
                     travel[i].place_name = places[j].name; 
                   }
+
+                  if(places[j].dono_id == req.session.passport.user){
+                    tembanco = true;
+                  }
+
                 }
 
                 for(var k in vehicles){
@@ -80,7 +87,8 @@ module.exports = {
                   vehicles: vehicles,
                   travels:travel,
                   weapons: weapons,
-                  myweapons:groups
+                  myweapons:groups,
+                  tembanco:tembanco
                 });
 
 
@@ -138,20 +146,41 @@ module.exports = {
        if(req.param('h_weapon_price')>user.money){
           return res.redirect('/dashboard');
        }else{
-          var userwObj = {
-                    user_id : req.session.passport.user,
-                    weapon_id: req.param('sel_weapon')
-                  }
-          Userweapons.create(user.id,userwObj, function userweaponCreated(err){
 
-            //VERIFICAR TRAVAMENTO PARA ESTE ERRO
-            /*if(err) { 
-              return res.redirect('/user/edit/'+req.param('id'));
-            }*/
-            return res.redirect('/dashboard');
-            
+           if(req.param('sel_what_weapon') == 2)
+           {
+              var placewObj = {
+                        place_id : user.banco,
+                        weapon_id: req.param('sel_weapon')
+                      }
+              Placeweapons.create(placewObj, function placeweaponCreated(err){
 
-          });
+                //VERIFICAR TRAVAMENTO PARA ESTE ERRO
+                /*if(err) { 
+                  return res.redirect('/user/edit/'+req.param('id'));
+                }*/
+                return res.redirect('/dashboard');
+                
+
+              });
+          }else{
+
+            var userwObj = {
+                        user_id : req.session.passport.user,
+                        weapon_id: req.param('sel_weapon')
+                      }
+              Userweapons.create(user.id,userwObj, function userweaponCreated(err){
+
+                //VERIFICAR TRAVAMENTO PARA ESTE ERRO
+                /*if(err) { 
+                  return res.redirect('/user/edit/'+req.param('id'));
+                }*/
+                return res.redirect('/dashboard');
+                
+
+              });
+
+          }
        }
     });
 
