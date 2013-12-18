@@ -40,6 +40,19 @@ $("#sel_place").select2({
 		$("#minute_total").html(tempoInMinutes);
 		$("#tempo_estimado").removeClass("hide");
 
+		$.ajax({
+	  		url: "/dashboard/secure_place",
+	  		type: "get",
+	  		data: {place_id : state.id},
+	  		success: function(data){
+	  			if($.trim(data) != ""){
+	  				$("#place-local-roubo").after(data);
+	  			}else{
+	  				$("#list-seguranca-place").remove();
+	  			}
+	  		}
+	  	});
+
 		//var obj = {0:convertMetroInKm,1:tempoInHour,2:tempoInMinutes};
 		//console.dir(obj);
 		//$("#placeId").html('<img src="/linker/images/places/'+ state.id +'.jpg" class="img-responsive"  />'  );

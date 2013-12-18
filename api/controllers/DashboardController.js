@@ -55,22 +55,15 @@ module.exports = {
               }
 
               Userweapons.find({user_id: req.session.passport.user}, function foundUsersweapons(err,userweapons){
-                var total_weapon = 0,aux_id,newuserweapons = new Array();
+                //var total_weapon = 0,aux_id,newuserweapons = new Array();
                 for(var i in userweapons){
                   for(var j in weapons){
                     //if(weapons[j].id == userweapons[i].weapon_id && aux_id != userweapons[i].weapon_id){
                     if(weapons[j].id == userweapons[i].weapon_id){
-                    
                       userweapons[i].weapon_name = weapons[j].name;
-                      //newuserweapons[i].weapon_name = weapons[j].name;
-                      total_weapon++;
-                      newuserweapons.push({weapon_name:weapons[j].name,total: total_weapon});
-                      //aux_id = userweapons[i].weapon_id;
                       
                     }
                   }
-                  //userweapons[i].weapon_total = total_weapon;
-                  //newuserweapons[i].weapon_total = total_weapon;
                 }  
 
                 var groups = _.groupBy(userweapons,"weapon_name");
@@ -134,6 +127,31 @@ module.exports = {
         });
 
 
+    });
+
+
+  },
+
+  'secure_place' : function (req,res,next){
+    Weapons.find(function foundWeapons(err,weapons){
+      Placeweapons.find({place_id: req.param('place_id')}, function foundPlaceweapons(err,placeweapons){
+          for(var i in placeweapons){
+            for(var j in weapons){
+              if(weapons[j].id == placeweapons[i].weapon_id){
+                placeweapons[i].weapon_name = weapons[j].name;
+                
+              }
+            }
+          }  
+
+          var groups = _.groupBy(placeweapons,"weapon_name");
+          //console.dir(groups);
+          res.view({
+            placeweapons: groups,
+            layout: null
+          });
+
+      });
     });
 
 
