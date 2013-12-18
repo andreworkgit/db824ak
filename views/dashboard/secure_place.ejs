@@ -1,0 +1,13 @@
+<% if(_.size(placeweapons)>0){  %>
+<div class="form-group" id="list-seguranca-place">
+	<label class="col-lg-4 control-label" for="normalInput">Segurança com</label>
+    <div class="col-lg-8">
+		<select name="place_weapon" id="place_weapon" class="nostyle form-control" multiple="multiple" >
+		  <% _.each(placeweapons,function(v,k) {  %>
+		    <option value=""><%- k %> > Qtd: <%- v.length %></option>
+		  <% }) %> 
+		</select>
+	</div>
+
+</div>
+<% } %>
